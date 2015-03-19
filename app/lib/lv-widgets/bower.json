@@ -1,0 +1,45 @@
+{
+  "name": "lv-widgets",
+  "version": "1.0.6",
+  "authors": [
+    "snera <snera@longviewinc.com>",
+    "dstreicher <dstreicher@longviewinc.com>"
+  ],
+  "keywords": [
+    "longview",
+    "508",
+    "backbone",
+    "marionette"
+  ],
+  "description": "A collection of 508-compliant utilities for use in a Backbone.Marionette web application.",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/lv-widgets.js",
+  "dependencies"  : {
+    "jquery": ">=2.1.0",
+    "underscore": ">=1.6.0",
+    "backbone": ">=1.1.0",
+    "marionette": ">=1.8.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs",
+    "reports",
+    "spec",
+    ".gitignore",
+    ".travis.yml",
+    ".editorconfig",
+    ".jshintc",
+    "build",
+    "build.cmd",
+    "Gruntfile.js",
+    "package.json",
+    "addrem",
+    "getdeps",
+    "tmp"
+  ]
+}

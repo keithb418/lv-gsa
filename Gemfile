@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+gem 'compass'
+gem 'selenium-webdriver'
+gem 'test-unit'
+gem 'ci_reporter'
+gem 'rspec'

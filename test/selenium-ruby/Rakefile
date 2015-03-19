@@ -1,0 +1,16 @@
+require 'rubygems'
+require 'rspec/core/rake_task'
+require 'ci/reporter/rake/rspec'
+
+RSpec::Core::RakeTask.new(:all) do |spec|
+  spec.ruby_opts = '-I lib:spec'
+  spec.pattern = 'spec/GSA/*_spec.rb'
+end
+
+task :run_tests do |t, args|
+  task = args[:taskname] || :all
+  Rake::Task[task].reenable
+  Rake::Task[task].invoke
+end
+
+task :default => [:run_tests]

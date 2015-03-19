@@ -1,0 +1,150 @@
+import org.gradle.api.tasks.Exec
+import org.apache.tools.ant.taskdefs.condition.Os
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'war'
+
+
+ext.archiveName = 'gsa'
+ext.revision    = "2.0.0"
+ext.target = System.properties['target'] ? System.properties['target'].toUpperCase() : 'DEV'
+
+
+// Versioning
+String runCmd(String cmd) {
+    def cmdProc = cmd.execute()
+    def result = cmdProc.text.trim()
+    return result
+}
+
+def buildInfo = { ->
+    ext.commitBranch= runCmd "git rev-parse --abbrev-ref HEAD"
+    ext.commitCount = runCmd "git rev-list HEAD --count"
+    ext.commitRevision = runCmd "git rev-parse --short HEAD"
+
+    switch(ext.target) {
+        case 'RELEASE':
+            // QVE
+            ext.buildMode = 'RELEASE'
+            version = ext.revision+'.'+commitCount
+            break
+        case 'FINAL':
+            // VA
+            ext.buildMode = 'FINAL'
+            version = ext.revision
+            break
+        case 'DEV':
+        default:
+            // Development
+            ext.buildMode = 'SNAPSHOT'
+            version = ext.revision+'-SNAPSHOT'
+            break
+    }
+
+    ext.timestamp = new Date();
+}
+buildInfo()
+
+if (System.properties['isWeblogic']) {
+    apply from: 'weblogic.gradle'
+}
+
+task gemBundle (type: Exec) {
+    workingDir '.'
+if(Os.isFamily(Os.FAMILY_WINDOWS))
+{
+      commandLine 'cmd', '/c', 'bundle'
+} else {
+      commandLine 'bundle'
+  }
+}
+
+task npmInstall (type:Exec) {
+    workingDir '.'
+if(Os.isFamily(Os.FAMILY_WINDOWS))
+{
+      commandLine 'cmd', '/c', 'npm', 'install'
+} else {
+      commandLine 'npm', 'install'
+  }
+}
+task bowerInstall (type:Exec) {
+
+if(Os.isFamily(Os.FAMILY_WINDOWS))
+{
+      commandLine 'cmd', '/c', 'bower', 'install'
+} else {
+      commandLine 'bower', 'install'
+  }
+
+}
+
+task gruntBuild (type:Exec, dependsOn: [gemBundle, npmInstall, bowerInstall]) {
+if (buildMode == 'SNAPSHOT') {
+	if(Os.isFamily(Os.FAMILY_WINDOWS))
+	{
+      	commandLine 'cmd', '/c', 'grunt', 'devBuild'
+	} else {
+      	commandLine 'grunt', 'devBuild'
+	  }
+} else{
+	if(Os.isFamily(Os.FAMILY_WINDOWS))
+	{
+      	commandLine 'cmd', '/c', 'grunt', 'build'
+	} else {
+      	commandLine 'grunt', 'build'
+  	}
+    }
+}
+
+war {
+    from 'dist' // adds a file-set to the root of the archive
+}
+
+war.dependsOn gruntBuild
+
+war.doFirst {
+    println 'build MANIFEST.MF'
+    manifest {
+        attributes 'Implementation-Title':project.name,
+                   'Implementation-Version':revision,
+                   'Implementation-Build-Mode':buildMode,
+                   'Implementation-Timestamp':timestamp,
+                   'Commit-Branch':commitBranch,
+                   'Commit-Count':commitCount,
+                   'Commit-Revision':commitRevision
+    }
+}
+
+war {
+    from 'dist' // adds a file-set to the root of the archive
+}
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.agilex.web.gsa'
+            artifactId archiveName
+
+            from components.web
+        }
+    }
+    repositories {
+        maven {
+            url 'https://ihealthbuild.agilexhealth.com/artifactory/agilex'
+            credentials {
+                username "admin"
+                password 'Agilexadmin99$'
+            }
+        }
+    }
+}
+
+
+ant.importBuild 'ant-builds/tomcat/targets.xml'
+ant.properties['deployment.war.name']=ext.archiveName
+ant.properties['deployment.war.file.path']=war.archivePath

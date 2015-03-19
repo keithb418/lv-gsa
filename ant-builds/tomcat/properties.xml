@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tomcat.properties">
+	<script language="javascript">
+		<![CDATA[
+      		importClass(java.io.File);
+      		var currentLocation = new File(self.getLocation().getFileName()).getParent();
+      		project.setProperty("tomcat.lib", currentLocation + "/build-lib");
+		]]>
+	</script>
+
+	<taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask">
+		<classpath>
+			<fileset dir="${tomcat.lib}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	  <!-- Configure properties to access the Manager application -->
+	  <property name="mgr.url"			value="http://localhost:8080/manager"/>
+	  <property name="mgr.username"		value="admin"/>
+	  <property name="mgr.password"		value="Agilexadmin99$"/>
+	  <property name="app.url"			value="http://localhost:8080/gsa"/>
+	  <property name="statuscode"		value="200"/>
+</project>

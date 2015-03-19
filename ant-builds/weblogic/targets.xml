@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="weblogic.targets">
+	<import file="properties.xml" />
+
+	<target name="deployToWeblogic" depends="build">
+		<echo message="Deploying to Weblogic" />
+
+		<wldeploy action="undeploy" verbose="true" debug="true" name="${deployment.war.name}" 
+			user="${admin.username}" password="${admin.password}" adminurl="${admin.url}" 
+			targets="${domain.targets}" failonerror="false" />
+
+		<wldeploy action="deploy" verbose="true" debug="true" remote="${admin.remote}" 
+			name="${deployment.war.name}" source="${deployment.war.file.path}" user="${admin.username}" 
+			password="${admin.password}" adminurl="${admin.url}" targets="${domain.targets}" upload="true"/>
+
+	</target>
+
+</project>

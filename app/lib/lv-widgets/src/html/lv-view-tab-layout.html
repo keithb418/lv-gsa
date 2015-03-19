@@ -1,0 +1,12 @@
+<ul class="lv-tabs nav nav-tabs nav-justified" role="tablist">
+    <% _.each(tabs, function (tab, tabname) { %>
+        <% if (tabname === defaultTab) { %>
+            <li class="active"><a class="lv-tab-<%= tabname.toLowerCase() %>" href="#"><%= tabname %></a><div class="lv-tab-bottom"></div></li>
+        <% } else { %>
+            <li><a class="lv-tab-<%= tabname.toLowerCase() %>" href="#"><%= tabname %></a><div class="lv-tab-bottom"></div></li>
+        <% } %>
+    <% }); %>
+</ul>
+<div class="lv-tab-content">
+
+</div>
