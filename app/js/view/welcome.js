@@ -19,6 +19,8 @@ define(function (require) {
     },
     changeToLoggedInRoutes: function () {
       App.reprocessRoutes(true);
+      Backbone.history.stop();
+      Backbone.history.start();
     }
 
   });

@@ -4,6 +4,8 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap', 'lv-widge
 
   App.name = 'GSA';
   App.version = '1.0.0';
+  
+  App.$el = $('body');
 
   App.AjaxLoader = new LV.AjaxLoader();
 

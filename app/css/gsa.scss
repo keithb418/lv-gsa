@@ -6,6 +6,12 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 $header-height: 48px;
 $footer-height: 24px;
 
+.welcome {
+    .container-full > header,
+    .container-full > footer{ 
+        display: none;
+    }
+}
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
