@@ -1,3 +1,4 @@
+'use strict';
 require.config({
   paths: {
     //Libraries
@@ -27,7 +28,10 @@ require(['app', 'router', 'controller/popupController'], function (App, Router, 
   App.addInitializer(function () {
     this.router = new Router();
     this.popups = new PopupController();
-    this.vent.trigger('route:startup');
+    this.reprocessRoutes();
+  });
+  App.on('intialize:after', function () {
+     this.vent.trigger('route:startup');
   });
   App.start();
 });

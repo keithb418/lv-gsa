@@ -7,9 +7,17 @@ define(function (require) {
     tagName: 'div',
     className: '',
     template: _.template(template),
-
     events: {
-
+  	   'click #proceed-to-app-btn': 'changeToLoggedInRoutes'
+    },
+    onShow: function () {
+      App.$el.addClass('welcome');
+    },
+    onClose: function () {
+      App.$ell.removeClass('welcome');
+    },
+    changeToLoggedInRoutes: function () {
+      App.reprocessRoutes(true);
     }
 
   });

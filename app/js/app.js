@@ -1,5 +1,5 @@
 define(['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap', 'lv-widgets'], function () {
-
+  'use strict';
   var App = new Backbone.Marionette.Application();
 
   App.name = 'GSA';
@@ -12,6 +12,15 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap', 'lv-widge
     headerRegion: 'header',
     footerRegion: 'footer'
   });
+  
+  App.reprocessRoutes = function (loggedIn) {
+      var routes = loggedIn ? App.router.loggedInRoutes : App.router.notLoggedInRoutes;
+
+      App.router.processAppRoutes(
+          App.router.controller,
+          routes
+      );
+  };
 
   App.vent.on('route:startup', function () {
     Backbone.history.start();
