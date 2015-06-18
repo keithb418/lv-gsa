@@ -11,7 +11,7 @@ describe 'Splash page' do
   end
 
   it 'will have hihihihi' do
-    expect(@driver.find_element(:id, "content").text).to match"hihihihihi"
+    expect(@driver.find_element(:id, "content").text).to match "hihihihihi"
 
   end
 
