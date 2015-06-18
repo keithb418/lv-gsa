@@ -2,7 +2,6 @@ require 'rubygems'
 # require 'json'
 require 'selenium-webdriver'
 require 'rspec'
-require './spec/Functions'
 
 version = '>= 0'
 
@@ -11,6 +10,7 @@ if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
   ARGV.shift
 end
 
+# don't know why these are here, but it breaks rspec
 gem 'rspec-core', version
 load Gem.bin_path('rspec-core', 'rspec', version)
 
