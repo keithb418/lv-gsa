@@ -1,4 +1,5 @@
-require './spec/spec_helper'
+require_relative '../spec_helper'
+
 include RSpec::Expectations
 
 # feel free to use this outline if it's useful, ignore if not
@@ -12,8 +13,8 @@ describe 'Describe your tests - for example Patient Detail Page' do
     @accept_next_alert = true
     @driver.manage.timeouts.implicit_wait = 3
     @verification_errors = []
-    set_variables
-    @driver.get(@app_url)
+    
+    @driver.get("localhost:9000")
   end
   before(:each) do
   end
@@ -28,7 +29,8 @@ describe 'Describe your tests - for example Patient Detail Page' do
     # story jira ID
     it 'what is being tested' do
       # acc ticket id
-      pending("why is it pending - remove when ready")
+      # pending("why is it pending - remove when ready")
+      expect(@driver.find_element(:id,'content').text).to include 'hi'
       # selenium code goes here including lines such as
       # expect(@driver.find_element(:id, "splashTitle").text).to eq "SafeWomenRx"
     end
