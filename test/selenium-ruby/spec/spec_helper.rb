@@ -1,4 +1,6 @@
 require 'rubygems'
+# require 'json'
+require 'selenium-webdriver'
 require 'rspec'
 require 'rspec/expectations'
 require 'selenium-webdriver'
@@ -19,11 +21,12 @@ RSpec.configure do |config|
     @driver.quit
   end
 
-def element_present?(how, what)
-  @driver.find_element(how, what)
-  true
-rescue Selenium::WebDriver::Error::NoSuchElementError
-  false
+  def element_present?(how, what)
+    @driver.find_element(how, what)
+    true
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    false
+  end
 end
 
 def element_visible?(how, what)
@@ -59,16 +62,5 @@ def close_alert_and_get_its_text(how, what)
   else
     alert.dismiss()
   end
-  alert_text
-ensure
-  @accept_next_alert = true
+
 end
-
-
-def getElements(how, what)
-  elements = []
-  elements = @driver.find_elements(how, what)
-  return elements
-end
-
-
