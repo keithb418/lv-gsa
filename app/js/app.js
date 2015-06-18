@@ -14,12 +14,12 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap', 'lv-widge
   });
   
   App.reprocessRoutes = function (loggedIn) {
-      var routes = loggedIn ? App.router.loggedInRoutes : App.router.notLoggedInRoutes;
+    var routes = loggedIn ? App.router.loggedInRoutes : App.router.notLoggedInRoutes;
 
-      App.router.processAppRoutes(
-          App.router.controller,
-          routes
-      );
+    App.router.processAppRoutes(
+      App.router.controller,
+      routes
+    );
   };
 
   App.vent.on('route:startup', function () {

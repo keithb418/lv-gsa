@@ -31,7 +31,7 @@ require(['app', 'router', 'controller/popupController'], function (App, Router, 
     this.reprocessRoutes();
   });
   App.on('intialize:after', function () {
-     this.vent.trigger('route:startup');
+    this.vent.trigger('route:startup');
   });
   App.start();
 });

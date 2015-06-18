@@ -8,7 +8,7 @@ define(function (require) {
     className: '',
     template: _.template(template),
     events: {
-  	   'click #proceed-to-app-btn': 'changeToLoggedInRoutes'
+      'click #proceed-to-app-btn': 'changeToLoggedInRoutes'
     },
     onShow: function () {
       App.$el.addClass('welcome');
