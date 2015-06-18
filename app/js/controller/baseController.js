@@ -24,10 +24,13 @@ define(function (require) {
       App.contentRegion.show(new AboutView());
     },
     showWelcome: function () {
-      Backbone.history.navigate('/');
       var Welcome = require('view/welcome');
       App.contentRegion.show(new Welcome());
     },
+    showMedList: function () {
+      var MedList = require('view/medList');
+      App.contentRegion.show(new MedList());
+    }
     
   });
 });

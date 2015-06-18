@@ -1,23 +1,15 @@
 define(function (require) {
   'use strict';
   var App = require('app');
-  var template = require('text!../../html/about.html');
+  var template = require('text!../../html/med-list.html');
 
   return Backbone.Marionette.ItemView.extend({
-    id: 'about',
-    tagName: 'div',
-    className: '',
+    className: 'med-list',
     template: _.template(template),
-
     serializeData: function () {
       return {
-        appName: App.name,
-        version: App.version
+        appName: App.name
       };
-    },
-
-    events: {
-
     }
 
   });

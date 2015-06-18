@@ -1,26 +1,18 @@
 define(function (require) {
+  'use strict';
+  var App = require('app');
   var BaseController = require('controller/baseController');
 
   return Backbone.Marionette.AppRouter.extend({
-
-    routeGroups: {
-      base: {
-        controller: new BaseController(),
-        routes: {
-          '': 'showWelcome',
-          'graph': 'showGraph',
-          '*actions': 'showWelcome'
-        }
-      }
+    controller: new BaseController(),
+    notLoggedInRoutes: {
+      '': 'showWelcome',
+      '*actions': 'showWelcome'
     },
-
-    initialize: function () {
-      _.each(this.routeGroups, function (router) {
-        this.processAppRoutes(router.controller, router.routes);
-      }, this);
-    },
-    getController: function (id) {
-      return this.routeGroups[id].controller;
+    loggedInRoutes: {
+      '': 'showMedList',
+      'graph': 'showGraph',
+      '*actions': 'showMedList'
     }
   });
 });

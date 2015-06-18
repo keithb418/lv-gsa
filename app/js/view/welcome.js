@@ -1,4 +1,5 @@
 define(function (require) {
+  'use strict';
   var App = require('app');
   var template = require('text!../../html/welcome.html');
 
@@ -7,9 +8,19 @@ define(function (require) {
     tagName: 'div',
     className: '',
     template: _.template(template),
-
     events: {
-
+      'click #proceed-to-app-btn': 'changeToLoggedInRoutes'
+    },
+    onShow: function () {
+      App.$el.addClass('welcome');
+    },
+    onClose: function () {
+      App.$el.removeClass('welcome');
+    },
+    changeToLoggedInRoutes: function () {
+      App.reprocessRoutes(true);
+      Backbone.history.stop();
+      Backbone.history.start();
     }
 
   });
