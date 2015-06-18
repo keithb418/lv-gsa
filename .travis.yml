@@ -12,7 +12,8 @@ install:
  - grunt devBuild
  - node server.js &
  - sleep 3
- - rspec test/selenium-ruby/spec/GSA/empty_draft.rb
+ - cd test/selenium-ruby/spec
+ - rspec
 notifications:
  on_success: never
  on_failure: always

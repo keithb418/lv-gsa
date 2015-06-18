@@ -16,3 +16,4 @@ test/lib/
 .settings/*
 *.iml
 atlassian-ide-plugin.xml
+Gemfile.lock
