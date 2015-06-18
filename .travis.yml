@@ -12,7 +12,7 @@ install:
  - grunt devBuild
  - node server.js &
  - sleep 3
- - cd test/selenium-ruby/spec
+ - cd test/selenium-ruby
  - rspec
 notifications:
  on_success: never
