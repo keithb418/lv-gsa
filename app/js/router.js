@@ -3,15 +3,15 @@ define(function (require) {
   var BaseController = require('controller/baseController');
 
   return Backbone.Marionette.AppRouter.extend({
-      controller: new BaseController(),
-      notLoggedInRoutes: {
-        '': 'showWelcome',
-        '*actions': 'showWelcome'
-      },
-      loggedInRoutes: {
-        '': 'showWelcome',
-        'graph': 'showGraph',
-        '*actions': 'showWelcome'
+    controller: new BaseController(),
+    notLoggedInRoutes: {
+      '': 'showWelcome',
+      '*actions': 'showWelcome'
+    },
+    loggedInRoutes: {
+      '': 'showWelcome',
+      'graph': 'showGraph',
+      '*actions': 'showWelcome'
     }
   });
 });
