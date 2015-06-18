@@ -1,5 +1,6 @@
 define(function (require) {
   'use strict';
+  var App = require('app');
   var BaseController = require('controller/baseController');
 
   return Backbone.Marionette.AppRouter.extend({
