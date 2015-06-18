@@ -6,8 +6,8 @@ describe 'Splash page' do
     @splash = Splash.new (@driver)
   end
 
-  it 'will have the title GSA' do
-    expect(@splash.return_splash_title).to match 'GSA'
+  it 'will have the title Med' do
+    expect(@splash.return_splash_title).to match 'Med'
   end
 
   it 'will have hihihihi' do
