@@ -6,15 +6,14 @@ describe 'Splash page' do
     @splash = Splash.new (@driver)
   end
 
-  it 'will have the title Med' do
-    expect(@splash.return_splash_title).to match 'Med'
+
+  it 'will have hello world text' do
+    expect(@driver.find_element(:id, "content").text).to match "Hello World"
   end
 
-  it 'will have hihihihi' do
-    expect(@driver.find_element(:id, "content").text).to match "hihihihihi"
-
+  it 'will have a button to proceed to app' do
+    expect(@driver.find_element(:id, "proceed-to-app-btn").text).to eq "Proceed to App"
   end
-
 
 end
 
