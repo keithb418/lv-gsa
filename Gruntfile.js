@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     yeoman: yeomanConfig,
     watch: {
       options: {
-        nospawn: true,
+        spawn: false,
         livereload: true
       },
       lint: {
@@ -29,15 +29,25 @@ module.exports = function (grunt) {
         ],
         tasks: ['jshint']
       },
-      gradle: {
+      build: {
         files: [
-          '<%= yeoman.app %>/**/*.html',
-          '<%= yeoman.app %>/css/{,*/}*.{scss,sass}',
+          '<%= yeoman.app %>/css/**/*.scss',
+          '<%= yeoman.app %>/css/**/*.css',
           '<%= yeoman.app %>/js/**/*.js',
-          '<%= yeoman.app %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp}'
+          '<%= yeoman.app %>/html/**/*.html'
         ],
-        tasks: ['shell:deploywar', 'notify:gradle']
+        tasks: ['devBuild']
       }
+
+      // gradle: {
+      //   files: [
+      //     '<%= yeoman.app %>/**/*.html',
+      //     '<%= yeoman.app %>/css/{,*/}*.{scss,sass}',
+      //     '<%= yeoman.app %>/js/**/*.js',
+      //     '<%= yeoman.app %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp}'
+      //   ],
+      //   tasks: ['shell:deploywar', 'notify:gradle']
+      // }
     },
     notify: {
       gradle: {
@@ -238,7 +248,7 @@ module.exports = function (grunt) {
         command: 'rm -rf ./test/reports/'
       },
       selenium: {
-        command: 'rspec --format nested',
+        command: 'rspec',
         options : {
           stdout: true,
           stderr: true,
@@ -256,8 +266,23 @@ module.exports = function (grunt) {
           failOnError: true
         }
       }
+    },
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
+    },
+    concurrent: {
+      dev: {
+        tasks: ['nodemon', 'open:server', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('default', [
     'jshint',
@@ -290,4 +315,5 @@ module.exports = function (grunt) {
     'jshint',
     'shell:selenium'
   ]);
+  grunt.registerTask('serve', ['devBuild', 'concurrent:dev']);
 };
