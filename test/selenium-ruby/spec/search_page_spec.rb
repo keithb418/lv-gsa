@@ -1,6 +1,6 @@
 require_relative '../../selenium-ruby/pages/Splash'
 
-describe 'Splash page' do
+describe 'Search page' do
   # renaming to _draft - these tests are done in other scripts. no need for it anymore
   before(:all) do
     @splash = Splash.new (@driver)
