@@ -15,7 +15,7 @@ define(function (require) {
       App.$el.addClass('welcome');
     },
     onClose: function () {
-      App.$ell.removeClass('welcome');
+      App.$el.removeClass('welcome');
     },
     changeToLoggedInRoutes: function () {
       App.reprocessRoutes(true);
