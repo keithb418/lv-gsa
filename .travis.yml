@@ -7,3 +7,6 @@ install:
  - npm install -g grunt-cli
  - bower install
  - grunt devBuild
+notifications:
+ on_success: never
+ on_failure: always
