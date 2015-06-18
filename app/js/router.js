@@ -10,9 +10,9 @@ define(function (require) {
       '*actions': 'showWelcome'
     },
     loggedInRoutes: {
-      '': 'showWelcome',
+      '': 'showMedList',
       'graph': 'showGraph',
-      '*actions': 'showWelcome'
+      '*actions': 'showMedList'
     }
   });
 });
