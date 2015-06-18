@@ -10,11 +10,6 @@ describe 'Splash page' do
     expect(@splash.return_splash_title).to match 'Med'
   end
 
-  it 'will have hihihihi' do
-    expect(@driver.find_element(:id, "content").text).to match"hihihihihi"
-
-  end
-
 
 end
 
