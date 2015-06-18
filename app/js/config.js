@@ -9,6 +9,8 @@ require.config({
     'backbone.babysitter': '../lib/backbone.babysitter/lib/backbone.babysitter',
     'marionette': '../lib/marionette/lib/core/amd/backbone.marionette',
     'lv-widgets': '../lib/lv-widgets/dist/lv-widgets',
+    'd3':'../lib/d3/d3',
+    'bP':'lib/bP',
 
     //Plugins
     'text': '../lib/requirejs-text/text'
