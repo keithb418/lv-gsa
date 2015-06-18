@@ -16,6 +16,9 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'bootstrap', 'lv-widge
   App.vent.on('route:startup', function () {
     Backbone.history.start();
   });
+  App.vent.on('route:welcome', function () {
+    App.router.controller.showWelcome();
+  });
 
   return App;
 

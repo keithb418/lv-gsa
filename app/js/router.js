@@ -7,9 +7,9 @@ define(function (require) {
       base: {
         controller: new BaseController(),
         routes: {
-          '': 'showIndex',
-          'about': 'showAbout',
-          'graph': 'showGraph'
+          '': 'showWelcome',
+          'graph': 'showGraph',
+          '*actions': 'showWelcome'
         }
       }
     },
