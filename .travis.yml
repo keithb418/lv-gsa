@@ -1,4 +1,7 @@
 language: javascript
+before_install:
+ - "export DISPLAY=:99.0"
+ - "sh -e /etc/init.d/xvfb start"
 install: 
  - gem install bundler
  - bundle install
@@ -7,6 +10,10 @@ install:
  - npm install -g grunt-cli
  - bower install
  - grunt devBuild
+ - node server.js &
+ - sleep 3
+ - cd test/selenium-ruby
+ - rspec
 notifications:
  on_success: never
  on_failure: always

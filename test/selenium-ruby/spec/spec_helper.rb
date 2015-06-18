@@ -2,23 +2,31 @@ require 'rubygems'
 # require 'json'
 require 'selenium-webdriver'
 require 'rspec'
-require './spec/Functions'
+require 'rspec/expectations'
+require 'selenium-webdriver'
+# require 'rspec_junit_formatter'
+# require 'appium_lib'
 
-version = '>= 0'
+RSpec.configure do |config|
+  config.before(:all) do
+    @driver = Selenium::WebDriver.for :firefox
+    @accept_next_alert = true
+    @driver.manage.timeouts.implicit_wait = 3
 
-if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
-  version = $1
-  ARGV.shift
-end
+    @app_url = "localhost:9000"
+    @driver.get(@app_url)
+  end
 
-gem 'rspec-core', version
-load Gem.bin_path('rspec-core', 'rspec', version)
+  config.after(:all) do
+    @driver.quit
+  end
 
-def element_present?(how, what)
-  @driver.find_element(how, what)
-  true
-rescue Selenium::WebDriver::Error::NoSuchElementError
-  false
+  def element_present?(how, what)
+    @driver.find_element(how, what)
+    true
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    false
+  end
 end
 
 def element_visible?(how, what)
@@ -54,16 +62,5 @@ def close_alert_and_get_its_text(how, what)
   else
     alert.dismiss()
   end
-  alert_text
-ensure
-  @accept_next_alert = true
+
 end
-
-
-def getElements(how, what)
-  elements = []
-  elements = @driver.find_elements(how, what)
-  return elements
-end
-
-
