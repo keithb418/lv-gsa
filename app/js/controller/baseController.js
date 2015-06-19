@@ -26,7 +26,7 @@ define(function (require) {
         title: 'Medicine Reaction Graph',
         button: {
           title: 'Show Medicine List',
-          icon: 'btn-list',
+          icon: 'fa-th-list',
           action: function () {
             window.location.hash = '#';
           }

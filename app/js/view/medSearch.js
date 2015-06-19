@@ -4,6 +4,18 @@ define(function (require) {
   var template = require('text!../../html/med-search.html');
 
   return Backbone.Marionette.CompositeView.extend({
-	  template: template
+	  template: template,
+    events: {
+      'click #action-btn': 'doAction'
+    },
+    initialize: function () {
+      this.action = this.goToGraph;
+    },
+    doAction: function () {
+      this.action();
+    },
+    goToGraph: function () {
+      window.location.hash = '#graph';
+    }
   });
 });
