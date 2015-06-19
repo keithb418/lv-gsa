@@ -14,8 +14,8 @@ describe 'Search page' do
     expect(@driver.find_element(:id, "header").text).to match "Med Checker"
   end
 
-  it 'will have a section for medication lists' do
-    expect(@driver.find_element(:css, ".med-list h3").text).to eq "Med List"
+  it 'will have a link to show the graph' do
+    expect(@driver.find_element(:id, "show-graph-btn").text).to eq "Show Graph"
   end
 
 end
