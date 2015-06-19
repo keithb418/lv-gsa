@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 
   var yeomanConfig = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    unitTests: 'test/unit_tests'
   };
 
   grunt.initConfig({
@@ -179,6 +180,20 @@ module.exports = function (grunt) {
         }
       }
     },
+    jasmine: {
+			app: {
+				options: {
+					outfile: '<%= yeoman.unitTests %>/runner/SpecRunner.html',
+					keepRunner: true,
+					specs: '<%= yeoman.unitTests %>/specs/*Spec.js',
+					helpers: '<%= yeoman.unitTests %>/spec_helpers/*Helpers.js',
+					template: require('grunt-template-jasmine-requirejs'),
+					templateOptions: {
+						requireConfigFile: ['<%= yeoman.app %>/js/config.js', '<%= yeoman.unitTests %>/testConfig.js']
+					}
+				}
+			}
+		},
     htmlmin: {
       dist: {
         files: [{
@@ -313,5 +328,8 @@ module.exports = function (grunt) {
     'jshint',
     'shell:selenium'
   ]);
+  
   grunt.registerTask('serve', ['devBuild', 'concurrent:dev']);
+  
+  grunt.registerTask('test', ['jasmine:app']);
 };

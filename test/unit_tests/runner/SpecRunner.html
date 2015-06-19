@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner</title>
+
+  
+  <link rel="stylesheet" type="text/css" href="../../../.grunt/grunt-contrib-jasmine/jasmine.css">
+  
+
+  
+  
+  
+
+  <script src="../../../.grunt/grunt-contrib-jasmine/require.js"></script>
+
+  
+  
+  <script src="../../../.grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  
+  <script src="../../../.grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+  
+  <script src="../../../.grunt/grunt-contrib-jasmine/json2.js"></script>
+  
+  <script src="../../../.grunt/grunt-contrib-jasmine/boot.js"></script>
+  
+  
+
+  <script>
+    require.onError = function(error) {
+      var message = error.requireType + ': ';
+      if (error.requireType === 'scripterror' || error.requireType === 'notloaded' && error.requireModules) {
+        message += 'Illegal path or script error: ' + '[\'' + error.requireModules.join("', '") + '\']';
+      } else {
+        message += error.message;
+      }
+
+      throw Error(message);
+    };
+  </script>
+
+  <script>
+    
+
+    
+      require.config({
+  "paths": {
+    "bootstrap": "../lib/sass-bootstrap/dist/js/bootstrap",
+    "jquery": "../lib/jquery/dist/jquery",
+    "underscore": "../lib/underscore/underscore",
+    "backbone": "../lib/backbone/backbone",
+    "backbone.wreqr": "../lib/backbone.wreqr/lib/backbone.wreqr",
+    "backbone.babysitter": "../lib/backbone.babysitter/lib/backbone.babysitter",
+    "marionette": "../lib/marionette/lib/core/amd/backbone.marionette",
+    "lv-widgets": "../lib/lv-widgets/dist/lv-widgets",
+    "d3": "../lib/d3/d3",
+    "bP": "lib/bP",
+    "text": "../lib/requirejs-text/text",
+    "Jasmine": "../../test/unit_tests/libs/jasmine/jasmine",
+    "JasmineHtml": "../../test/unit_tests/libs/jasmine/jasmine-html",
+    "Boot": "../../test/unit_tests/libs/jasmine/boot",
+    "Console": "../../test/unit_tests/libs/jasmine/console"
+  },
+  "shim": {
+    "bootstrap": {
+      "deps": [
+        "jquery"
+      ],
+      "exports": "jquery"
+    },
+    "Jasmine": {
+      "deps": [
+        "Boot",
+        "Console"
+      ],
+      "exports": "Jasmine"
+    },
+    "JasmineHtml": {
+      "deps": [
+        "Jasmine"
+      ],
+      "exports": "Jasmine"
+    },
+    "Boot": {
+      "exports": "Boot"
+    },
+    "Console": {
+      "exports": "Console"
+    }
+  },
+  "baseUrl": "../../../app/js"
+});
+    
+  </script>
+
+  <script>
+    // Delay onLoad function until we are ready
+    var startTests = window.onload;
+    window.onload = null;
+
+    function launchTest() {
+    require([
+      
+    ],
+    function(){
+      require(['../specs/testSpec.js','../../../.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+        startTests();
+      });
+    }
+    )
+  }
+  </script>
+
+  
+  <script>
+  launchTest();
+  </script>
+  
+</head>
+<body>
+</body>
+</html>
