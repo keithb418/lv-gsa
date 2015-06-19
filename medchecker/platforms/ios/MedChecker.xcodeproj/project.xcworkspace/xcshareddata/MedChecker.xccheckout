@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9D9BF3D1-F49C-4043-ACEC-577BB7A9F1B8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MedChecker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F47738D70523D483EC2CB10622EE8BCD48944914</key>
+		<string>https://github.com/keithb418/lv-gsa.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>medchecker/platforms/ios/MedChecker.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F47738D70523D483EC2CB10622EE8BCD48944914</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/keithb418/lv-gsa.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F47738D70523D483EC2CB10622EE8BCD48944914</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F47738D70523D483EC2CB10622EE8BCD48944914</string>
+			<key>IDESourceControlWCCName</key>
+			<string>keith-gsa</string>
+		</dict>
+	</array>
+</dict>
+</plist>
