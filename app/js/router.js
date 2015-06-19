@@ -12,6 +12,7 @@ define(function (require) {
     loggedInRoutes: {
       '': 'showMedList',
       'graph': 'showGraph',
+      'about': 'showAbout',
       '*actions': 'showMedList'
     }
   });
