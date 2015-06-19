@@ -6,17 +6,26 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 $header-height: 48px;
 $footer-height: 24px;
 
+$dark-green: #388E3C;
+$green: #4CAF50;
+$light-green: #C8E6C9;
+$orange: #FF9800;
+$dark-text: #212121;
+$grey-text: #727272;
+$divider: #b6b6b6;
+
+* {
+    color: $dark-text;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .welcome {
     .container-full > header,
     .container-full > footer{ 
         display: none;
     }
-}
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
 }
 
 .container-full {
@@ -26,7 +35,7 @@ $footer-height: 24px;
 }
 
 .header-fixed {
-    background-color: #444;
+    background-color: $green;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -116,13 +125,68 @@ $footer-height: 24px;
     }
 }
 
+.subheader {
+    background-color: $green;
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    z-index: 10;
+    
+    * {
+        color: #fff;
+        margin: 0;
+    }
+    
+    .input-group {
+        * {
+            color: $dark-text;
+        }
+    }
+    
+    h2 {
+        margin: 0;
+        padding: 10px;
+    }
+    
+    .btn-primary {
+        background-color: $orange;
+        border: 0 none;
+        border-radius: 22px;
+        -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        color: #fff;
+        height: 44px;
+        padding: 0;
+        position: absolute;
+        right: 5px;
+        margin-top: -22px;
+        width: 44px;
+        
+        .btn-icon {
+            color: #fff;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            padding-top: 11px;
+            top: 0;
+            width: 100%;
+            
+            &:before {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
 .footer-fixed {
     position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
     height: $footer-height;
-    background-color: #000;
+    background-color: $green;
     .version {
         margin-left: 14px;
         color: #fff;
@@ -133,6 +197,10 @@ $footer-height: 24px;
 }
 
 #content {
-  padding-top: $header-height;
-  overflow: scroll;
+  bottom: $footer-height;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: $header-height;
 }
