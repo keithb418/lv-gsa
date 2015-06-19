@@ -11,9 +11,6 @@ define(function (require) {
     events: {
       'click #proceed-to-app-btn': 'changeToLoggedInRoutes'
     },
-    onShow: function () {
-      App.$el.addClass('welcome');
-    },
     onClose: function () {
       App.$el.removeClass('welcome');
     },
