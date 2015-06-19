@@ -11,6 +11,12 @@ define(function (require) {
     initialize: function () {
       this.action = this.goToGraph;
     },
+    onShow: function () {
+      App.views.mainLayout.$el.addClass('med-search-layout');
+    },
+    onClose: function () {
+      App.views.mainLayout.$el.removeClass('med-search-layout');
+    },
     doAction: function () {
       this.action();
     },

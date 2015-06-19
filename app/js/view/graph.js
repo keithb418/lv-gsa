@@ -6,17 +6,9 @@ define(function (require) {
   var d3 = require('d3');
 
   return Backbone.Marionette.ItemView.extend({
-    id: 'about',
-    tagName: 'div',
-    className: '',
+    id: 'graph',
+    className: 'fill-height',
     template: _.template(template),
-
-    serializeData: function () {
-      return {
-        appName: App.name,
-        version: App.version
-      };
-    },
     onShow: function() {
       var sales_data=[
         ['Lite','CA',16,0],
@@ -126,12 +118,12 @@ define(function (require) {
         ['Grand','WV',575,2],
         ['Elite','WV',368,3]
       ];
-
-      var width = '100%', height = 400, margin ={b:0, t:100, l:170, r:50};
+      
+      var translate = {x: 150, y: 50};
 
       var svg = d3.select('#'+this.id)
-        .append('svg').attr('width',width).attr('height',(height+margin.b+margin.t))
-        .append('g').attr('transform','translate('+ margin.l+','+margin.t+')');
+        .append('svg').attr('class', 'fill-height')
+        .append('g').attr('transform','translate(' + translate.x + ', ' + translate.y + ')');
 
       var data = [ 
         {data:bP.partData(sales_data,2), id:'SalesAttempts', header:['Channel','State', 'Sales Attempts']}

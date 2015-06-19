@@ -131,6 +131,8 @@ $divider: #b6b6b6;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     color: #fff;
+    height: 44px;
+    padding: 10px;
     z-index: 10;
     
     * {
@@ -139,14 +141,31 @@ $divider: #b6b6b6;
     }
     
     .input-group {
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        
         * {
             color: $dark-text;
+        }
+        
+        input {
+            border-right: 0 none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        
+        span {
+            background: #fff;
+            border-left: 0 none;
         }
     }
     
     h2 {
+        font-size: 20px;
         margin: 0;
-        padding: 10px;
+        padding: 0;
     }
     
     .btn-primary {
@@ -161,7 +180,7 @@ $divider: #b6b6b6;
         padding: 0;
         position: absolute;
         right: 5px;
-        margin-top: -22px;
+        margin-top: -12px;
         width: 44px;
         
         .btn-icon {
@@ -169,7 +188,7 @@ $divider: #b6b6b6;
             height: 100%;
             left: 0;
             position: absolute;
-            padding-top: 11px;
+            padding-top: 13px;
             top: 0;
             width: 100%;
             
@@ -186,7 +205,7 @@ $divider: #b6b6b6;
     left: 0px;
     right: 0px;
     height: $footer-height;
-    background-color: $green;
+    background-color: $dark-green;
     .version {
         margin-left: 14px;
         color: #fff;
@@ -196,11 +215,38 @@ $divider: #b6b6b6;
     }
 }
 
+.layout {
+    height: 100%;
+}
+
+.med-search-layout {
+    .subheader {
+        height: 75px;
+    }
+    .main-content {
+        height: calc(100% - 75px);
+    }
+}
+
+.main-content {
+    height: calc(100% - 44px);
+    overflow-y: auto;
+}
+
+graph {
+    height: 700px;
+}
+
+svg {
+    width: 100%;
+}
+
 #content {
-  bottom: $footer-height;
-  left: 0;
-  overflow: auto;
-  position: absolute;
-  right: 0;
-  top: $header-height;
+    height: calc(100% - 72px);
+    margin-top: $header-height;
+    width: 100%;
+}
+
+.fill-height {
+    height: 100%;
 }

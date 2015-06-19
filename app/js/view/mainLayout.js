@@ -5,6 +5,7 @@ define(function (require) {
 
   return Backbone.Marionette.Layout.extend({
     template: _.template(template),
+    className: 'layout',
     regions: {
       'subheaderRegion': '.subheader',
       'mainContentRegion': '.main-content'
