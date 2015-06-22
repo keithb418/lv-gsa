@@ -77,8 +77,6 @@ define(function (require) {
         });
       });
       
-      console.log('Will this cause the node server to blow up?');
-      
       return dataSet;
     },
     getGraphHeight: function () {
