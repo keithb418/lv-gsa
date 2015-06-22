@@ -23,7 +23,7 @@ define(function (require) {
       var GraphView = require('view/graph');
       this.showMainLayout();
       this.showSubheader({
-        title: 'Medicine Reaction Graph',
+        title: 'Medication Warnings Graph',
         button: {
           title: 'Show Medicine List',
           icon: 'fa-th-list',

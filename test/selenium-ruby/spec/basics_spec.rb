@@ -15,7 +15,7 @@ describe 'Splash page' do
 
   it 'will take you to the main app when you click proceed to app' do
     @splash.return_proceed_button.click
-    expect(@splash.return_header_text).to match "Med Checker"
+    expect(@splash.return_header_text).to match "MedChecker"
 
 
   end

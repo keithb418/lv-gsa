@@ -1,7 +1,7 @@
 !function(){
 	var bP={};	
 	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
-	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+	var c1=[-130, 40], c3=[-10, 140]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
 	
 	bP.partData = function(data,p){
@@ -121,17 +121,8 @@
 		mainbar.append("text").attr("class","barlabel")
 			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return data.keys[p][i];})
-			.attr("text-anchor","start" );
-			
-		mainbar.append("text").attr("class","barvalue")
-			.attr("x", c2[p]).attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return d.value ;})
-			.attr("text-anchor","end");
-			
-		mainbar.append("text").attr("class","barpercent")
-			.attr("x", c3[p]).attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;})
-			.attr("text-anchor","end").style("fill","grey");
+			.attr("text-anchor","start" )
+			.style('font-size', '15');
 			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()
@@ -152,17 +143,17 @@
 	
 	function drawHeader(header, id){
 		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-			.style("font-size","20").attr("x",108).attr("y",-20).style("text-anchor","middle")
+			.style("font-size","30").attr("x",108).attr("y",-20).style("text-anchor","middle")
 			.style("font-weight","bold");
 		
 		[0,1].forEach(function(d){
 			var h = d3.select("#"+id).select(".part"+d).append("g").attr("class","header");
 			
 			h.append("text").text(header[d]).attr("x", (c1[d]-5))
-				.attr("y", -5).style("fill","grey");
-			
-			h.append("text").text("Count").attr("x", (c2[d]-10))
-				.attr("y", -5).style("fill","grey");
+				.attr("y", -5)
+				.style("fill","grey")
+				.style("font-weight", "bold")
+				.style("font-size","15");
 			
 			h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
 				.attr("x2",c3[d]+10).attr("y2", -2).style("stroke","black")
@@ -188,10 +179,6 @@
 		mainbar.select(".barvalue").transition().duration(500)
 			.attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return d.value ;});
 			
-		mainbar.select(".barpercent").transition().duration(500)
-			.attr("y",function(d){ return d.middle+5;})
-			.text(function(d,i){ return "( "+Math.round(100*d.percent)+"%)" ;});
-			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p])
 			.transition().duration(500)
@@ -214,7 +201,9 @@
 		transitionEdges(data, id);
 	}
 	
-	bP.draw = function(data, svg){
+	bP.draw = function(data, svg, optHeight){
+		height = optHeight || height;
+	
 		data.forEach(function(biP,s){
 			svg.append("g")
 				.attr("id", biP.id)
@@ -235,7 +224,7 @@
 					.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });	
 			});
 		});	
-	}
+	};
 	
 	bP.selectSegment = function(data, m, s){
 		data.forEach(function(k){
@@ -258,7 +247,7 @@
 			selectedBar.select(".barvalue").style('font-weight','bold');
 			selectedBar.select(".barpercent").style('font-weight','bold');
 		});
-	}	
+	};	
 	
 	bP.deSelectSegment = function(data, m, s){
 		data.forEach(function(k){
@@ -272,7 +261,7 @@
 			selectedBar.select(".barvalue").style('font-weight','normal');
 			selectedBar.select(".barpercent").style('font-weight','normal');
 		});		
-	}
+	};
 	if (typeof define === "function" && define.amd) define(bP); else if (typeof module === "object" && module.exports) module.exports = bP;
 	this.bP = bP;
 }();

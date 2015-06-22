@@ -10,8 +10,8 @@ describe 'Search page' do
   end
 
 
-  it 'will have a title of Med Checker' do
-    expect(@driver.find_element(:id, "header").text).to match "Med Checker"
+  it 'will have a title of MedChecker' do
+    expect(@driver.find_element(:id, "header").text).to match "MedChecker"
   end
 
   it 'will have a link to show the graph' do
