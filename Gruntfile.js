@@ -36,16 +36,6 @@ module.exports = function (grunt) {
         ],
         tasks: ['devBuild']
       }
-
-      // gradle: {
-      //   files: [
-      //     '<%= yeoman.app %>/**/*.html',
-      //     '<%= yeoman.app %>/css/{,*/}*.{scss,sass}',
-      //     '<%= yeoman.app %>/js/**/*.js',
-      //     '<%= yeoman.app %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp}'
-      //   ],
-      //   tasks: ['shell:deploywar', 'notify:gradle']
-      // }
     },
     notify: {
       gradle: {
@@ -122,7 +112,7 @@ module.exports = function (grunt) {
       options: {
         sassDir: '<%= yeoman.app %>/css',
         cssDir: '.tmp/css',
-        imagesDir: ['<%= yeoman.app %>/assets', '<%= yeoman.app %>/lib/lv-widgets/src/assets'],
+        imagesDir: ['<%= yeoman.app %>/assets'],
         javascriptsDir: '<%= yeoman.app %>/js',
         fontsDir: '<%= yeoman.app %>/css/fonts',
         importPath: '<%= yeoman.app %>/lib',
