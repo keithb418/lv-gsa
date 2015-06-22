@@ -12,6 +12,8 @@ require.config({
     'lv-widgets': '../lib/lv-widgets/dist/lv-widgets',
     'd3':'../lib/d3/d3',
     'bP':'lib/bP',
+    'snap': '../lib/snap.svg/dist/snap.svg',
+    'classie': '../lib/classie/classie',
 
     //Plugins
     'text': '../lib/requirejs-text/text'
