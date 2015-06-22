@@ -1,3 +1,5 @@
+/*global mina*/
+
 define(function (require) {
   'use strict';
   var App = require('app');
@@ -21,7 +23,7 @@ define(function (require) {
     },
     
     ui: {
-      "menu": ".menu"
+      'menu': '.menu'
     },
     
     onRender: function () {

@@ -201,8 +201,9 @@
 		transitionEdges(data, id);
 	}
 	
-	bP.draw = function(data, svg, optHeight){
+	bP.draw = function(data, svg, optHeight, optBarWidth){
 		height = optHeight || height;
+		bb = optBarWidth || bb;
 	
 		data.forEach(function(biP,s){
 			svg.append("g")
