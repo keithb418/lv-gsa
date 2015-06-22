@@ -133,11 +133,15 @@ $divider: #b6b6b6;
     color: #fff;
     height: 44px;
     padding: 10px;
-    z-index: 10;
+    position: relative;
     
     * {
         color: #fff;
         margin: 0;
+    }
+    
+    p {
+        padding-top: 5px;
     }
     
     .input-group {
@@ -172,6 +176,7 @@ $divider: #b6b6b6;
         background-color: $orange;
         border: 0 none;
         border-radius: 22px;
+        bottom: -22px;
         -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -180,7 +185,6 @@ $divider: #b6b6b6;
         padding: 0;
         position: absolute;
         right: 5px;
-        margin-top: -12px;
         width: 44px;
         
         .btn-icon {
