@@ -2,7 +2,6 @@ define(function (require) {
   'use strict';
   var App = require('app');
   var snap = require('snap');
-  var classie = require('classie');
   var template = require('text!../../html/header.html');
 
   return Backbone.Marionette.ItemView.extend({
