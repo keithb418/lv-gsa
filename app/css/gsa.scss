@@ -26,6 +26,61 @@ $divider: #b6b6b6;
     .container-full > footer{ 
         display: none;
     }
+    #content {
+        background-color: $green;
+    	background: url('../assets/splashBackground-1440x900.jpg') no-repeat center center fixed;
+    	-webkit-background-size: cover;
+      	-moz-background-size: cover;
+      	background-size: cover;
+    	height: 100vh;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        #welcome {
+            text-align: center;
+            .title-wrapper {
+                background: rgba(255, 193, 7, .7);
+                margin: 20px 0;
+                padding: 10px 0;
+                text-align: center;
+            }
+            h1:before {
+                background: url('../assets/gsa-icon-3.png') no-repeat;
+                content: '';
+                display: inline-block;
+                height: 48px;
+                left: -55px;
+                position: absolute;
+                top: 12px;
+                width: 50px;
+            }
+            h1 {
+                color: $green;
+                display: inline;
+                font-size: 4em;
+                margin-left: 25px;
+                position: relative;
+                text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+            }
+            .app-btn-container {
+                bottom: 0;
+                height: 150px;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                .btn.btn-primary {
+                    font-size: 3em;
+                    background: $orange;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    border: none;
+                    box-shadow: 3px 3px 15px rgba(0, 0, 0, .5);
+                }
+            }
+        }
+    }
 }
 
 .container-full {
