@@ -1,6 +1,7 @@
 !function(){
 	var bP={};	
 	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
+	var id = "";
 	var c1=[-130, 40], c3=[-10, 140]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
 	
@@ -201,9 +202,32 @@
 		transitionEdges(data, id);
 	}
 	
+	function clearSelectStyles() {
+		var bars = d3.select("#" + id).selectAll(".mainbars").selectAll(".mainbar");
+		
+		bars.classed('active', false);
+		bars.select(".mainrect").style("stroke-opacity",0);			
+		bars.select(".barlabel").style('font-weight','normal');
+		bars.select(".barvalue").style('font-weight','normal');
+		bars.select(".barpercent").style('font-weight','normal');
+	}
+	
+	function hasValue(array, value) {
+		var has = false;
+		
+		for (var i = 0; i < array.length; i++) {
+			if (array[i] === value) {
+				has = true;
+			}
+		}
+		
+		return has;
+	}
+	
 	bP.draw = function(data, svg, optHeight, optBarWidth){
 		height = optHeight || height;
 		bb = optBarWidth || bb;
+		id = data[0].id;
 	
 		data.forEach(function(biP,s){
 			svg.append("g")
@@ -221,13 +245,20 @@
 					.select(".part"+p)
 					.select(".mainbars")
 					.selectAll(".mainbar")
-					.on("mouseover",function(d, i){ return bP.selectSegment(data, p, i); })
-					.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });	
+					.on("click",function(d, i){ 
+						if (hasValue(d3.event.currentTarget.classList, 'active')) {
+							return bP.deSelectSegment(data, p, i);
+						} 
+						
+						return bP.selectSegment(data, p, i); 
+					});	
 			});
 		});	
 	};
 	
 	bP.selectSegment = function(data, m, s){
+		clearSelectStyles();
+		
 		data.forEach(function(k){
 			var newdata =  {keys:[], data:[]};	
 				
@@ -239,10 +270,11 @@
 				.map( function(v){ return v.map(function(d, i){ return (s==i ? d : 0);}); });
 			
 			transition(visualize(newdata), k.id);
-				
+			
 			var selectedBar = d3.select("#"+k.id).select(".part"+m).select(".mainbars")
 				.selectAll(".mainbar").filter(function(d,i){ return (i==s);});
 			
+			selectedBar.classed('active', true);
 			selectedBar.select(".mainrect").style("stroke-opacity",1);			
 			selectedBar.select(".barlabel").style('font-weight','bold');
 			selectedBar.select(".barvalue").style('font-weight','bold');
@@ -257,6 +289,7 @@
 			var selectedBar = d3.select("#"+k.id).select(".part"+m).select(".mainbars")
 				.selectAll(".mainbar").filter(function(d,i){ return (i==s);});
 			
+			selectedBar.classed('active', false);
 			selectedBar.select(".mainrect").style("stroke-opacity",0);			
 			selectedBar.select(".barlabel").style('font-weight','normal');
 			selectedBar.select(".barvalue").style('font-weight','normal');
