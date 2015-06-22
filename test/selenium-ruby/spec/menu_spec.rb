@@ -1,4 +1,4 @@
-require_relative '../../selenium-ruby/pages/Splash'
+require_relative '../../selenium-ruby/pages/Welcome'
 
 describe 'Menu' do
   # renaming to _draft - these tests are done in other scripts. no need for it anymore
