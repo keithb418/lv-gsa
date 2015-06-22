@@ -33,7 +33,8 @@ module.exports = function (grunt) {
       build: {
         files: [
           '<%= yeoman.app %>/js/**/*',
-          '<%= yeoman.app %>/css/**/*'
+          '<%= yeoman.app %>/css/**/*',
+          '<%= yeoman.app %>/html/**/*'
         ],
         tasks: ['devBuild']
       }
