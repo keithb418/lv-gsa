@@ -13,7 +13,9 @@
     "requirejs-text": "~2.0.10",
     "modernizr": "~2.7.1",
     "lv-widgets": "https://bitbucket.org/longview/lv-widgets.git#edge",
-    "d3": "~3.5.5"
+    "d3": "~3.5.5",
+    "classie": "latest",
+    "snap.svg": "latest"
   },
   "devDependencies": {}
 }
