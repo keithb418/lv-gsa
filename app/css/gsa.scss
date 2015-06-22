@@ -6,10 +6,10 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 $header-height: 48px;
 $footer-height: 24px;
 
-$dark-green: #388E3C;
-$green: #4CAF50;
-$light-green: #C8E6C9;
-$orange: #FF9800;
+$dark-green: #00796B;
+$green: #009688;
+$light-green: #B2DFDB;
+$orange: #FFC107;
 $dark-text: #212121;
 $grey-text: #727272;
 $divider: #b6b6b6;
@@ -195,7 +195,7 @@ $divider: #b6b6b6;
         }
         .menu__items li a {
           display: block;
-          background: #FF9800;
+          background: $orange;
           border-radius: 50%;
           outline: none;
           overflow: hidden;
@@ -208,7 +208,7 @@ $divider: #b6b6b6;
         }
         .menu__items li a:hover,
         .menu__items li a:focus {
-          background: #388E3C;
+          background: $dark-green;
         }
         .menu__items li a i {
             color: #FFF;
@@ -228,12 +228,12 @@ $divider: #b6b6b6;
           z-index: 100;
         }
         .morph-shape svg path {
-          fill: #388E3C;
+          fill: $dark-green;
           -webkit-transition: fill 0.3s;
           transition: fill 0.3s;
         }
         .menu--open .morph-shape svg path {
-          fill: #FF9800;
+          fill: $orange;
         }
     }
 }
