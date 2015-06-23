@@ -7,7 +7,7 @@ define(function (require) {
 
   return Backbone.Marionette.ItemView.extend({
     id: 'graph',
-    className: 'fill-height',
+    className: 'graph fill-height',
     template: _.template(template),
     initialize: function () {
       this.collection = new Backbone.Collection([
@@ -61,7 +61,7 @@ define(function (require) {
         var height = this.getGraphHeight();
         
         this.$el.find('svg > g').empty();
-        this.$el.find('svg').outerHeight(height + 30);
+        this.$el.find('svg').outerHeight(height + 30).outerWidth(500);
         bP.draw(data, svg, height);
       }, this));
       
