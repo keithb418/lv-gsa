@@ -6,7 +6,6 @@ describe 'Search page' do
     @welcome = Welcome.new (@driver)
 
     @welcome.return_proceed_button.click
-
   end
 
   it 'will have a search bar' do
@@ -29,7 +28,8 @@ describe 'Search page' do
     # basic outline:
       # add a couple meds
       # click the button
-      # check that the graph is displayed
+      # check that the graph page is displayed
+    # Title of that page is:  Medication Warnings Graph
   end
 
 end
