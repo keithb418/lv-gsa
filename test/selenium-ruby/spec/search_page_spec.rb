@@ -9,21 +9,45 @@ describe 'Search page' do
   end
 
   it 'will have a search bar' do
-    expect(@driver.find_element(:class, "med-search")).to be_truthy
+    expect(@driver.find_element(:class, 'select2-selection')).to be_truthy
   end
 
-  xit 'will auto complete drug name' do
+  it 'will autocomplete medicine names' do
+    @driver.find_element(:class, 'select2-selection').click
+    @driver.find_element(:css, "input.select2-search__field").clear
+    @driver.find_element(:css, "input.select2-search__field").send_keys "acetaminophen"
+    sleep 1
+    expect(@driver.find_element(:css, "li.select2-results__option").text).to match "OXYCODONE HYDROCHLORIDE AND ACETAMINOPHEN"
+    @driver.find_element(:class, 'select2-selection').click
+
+  end
+  it 'will return no results if input is zzz' do
     # basic outline
       # enter first 3 chars of a med: adv
       # let it autocomplete
       # verify advil is returned
+    sleep 1
+    @driver.find_element(:class, 'select2-selection').click
+    @driver.find_element(:css, "input.select2-search__field").clear
+    @driver.find_element(:css, "input.select2-search__field").send_keys "zzz"
+    sleep 1
+    expect(@driver.find_element(:css, "li.select2-results__option").text).to match "No results found"
+    @driver.find_element(:class, 'select2-selection').click
+
+    # sleep 10
+
   end
 
   it 'will include a link to show the graph' do
     expect(@driver.find_element(:id, "action-btn")).to be_truthy
+
   end
 
-  xit 'will have a link to show the graph' do
+  it 'will take users to the graph when graph link clicked' do
+    @driver.find_element(:id, "action-btn").click
+    sleep 1
+    expect(@driver.find_element(:class, 'subheader').text).to match 'Medication Warnings Graph'
+
     # QUESTION: what does this show when there are meds listed yet
     # basic outline:
       # add a couple meds
