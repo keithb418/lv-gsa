@@ -130,6 +130,30 @@ footer {
     }
 }
 
+.med-list {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    
+    * {
+        color: #fff;
+    }
+    
+    .med-list-item {
+        background-color: $grey-text;
+        border-bottom: 1px solid $divider;
+        padding: 10px;
+        width: inherit;
+    }
+    
+    button {
+        background: transparent;
+        border: 0 none;
+        font-size: 16px;
+    }
+}
+
 .container-full {
     width: 100%;
     height: 100%;
@@ -532,6 +556,7 @@ footer {
 }
 
 .main-content {
+    background-color: $light-green;
     height: calc(100% - 44px);
     overflow-y: auto;
 }

@@ -8,12 +8,12 @@ define(function (require) {
 	var welcome = new Welcome();
 
 	describe('Welcome Page', function () {
-		it('Expects the routes to change', function () {
+		it('changes the route', function () {
 			spyOn(welcome, "changeToLoggedInRoutes");
 			welcome.changeToLoggedInRoutes();
 			expect(welcome.changeToLoggedInRoutes).toHaveBeenCalled();
 		});
-		it('Expects to remove the class welcome on the close of the view', function () {
+		it('removes the class welcome on the close of the view', function () {
 			spyOn(welcome, "onClose");
 			welcome.onClose();
 			expect(welcome.onClose).toHaveBeenCalled();

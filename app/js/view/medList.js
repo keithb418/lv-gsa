@@ -4,7 +4,8 @@ define(function (require) {
   var MedListItem = require('view/medListItem');
   
   return Backbone.Marionette.CollectionView.extend({
-    "tagName": "ul",
-    "itemView": MedListItem
+    tagName: "ul",
+    className: "med-list",
+    itemView: MedListItem
   });
 });
