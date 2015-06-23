@@ -101,11 +101,17 @@ footer {
             }
             h1 {
                 color: $brand-primary;
-                display: inline;
+                display: block;
                 font-size: 4em;
                 margin-left: 50px;
                 position: relative;
                 text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+                margin-top:0;
+                
+                @media screen and (max-width: $screen-sm) {
+                    font-size: 3em; //make text smaller to fit screen
+                    padding-top: 10px; //add padding to offset for smaller text
+                }
             }
             .app-btn-container {
                 bottom: 0;
