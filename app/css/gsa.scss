@@ -85,6 +85,12 @@ footer {
                 border: 0px solid #000000;
                 background: rgba(0,0,0,0.8);
                 margin-top: 100px;
+                
+                //reduce the height and top padding for small mobile devices
+                @media screen and (max-width: $screen-sm) {
+                    margin-top: 30px;
+                    padding-top: 35px
+                }
             }
             h1:before {
                 background: url('../assets/gsa-icon-3.png') no-repeat;
@@ -108,6 +114,12 @@ footer {
                 @media screen and (max-width: $screen-sm) {
                     font-size: 3em; //make text smaller to fit screen
                     padding-top: 10px; //add padding to offset for smaller text
+                }
+                
+                @media screen and (max-width: $screen-xs) {
+                    font-size: 1.7em; //make text smaller to fit screen
+                    padding-top: 25px; //add padding to offset for smaller text
+                    margin-bottom: 15px; //give spacing between logo / name and description text
                 }
             }
             .app-btn-container {
