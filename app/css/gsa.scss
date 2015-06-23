@@ -1,8 +1,13 @@
 $icon-font-path: "../lib/sass-bootstrap/fonts/";
+
 @import 'font-awesome/font-awesome.min';
+@import 'bootstrap-social.css';
 @import 'sass-bootstrap/lib/bootstrap';
 @import 'chart-styles';
 @import 'lv-widgets/src/css/lv-widgets';
+@import 'vars';
+@import 'divider';
+@import 'forms';
 @import '../lib/select2/dist/css/select2.min.css';
 @import 'search';
 $header-height: 48px;
@@ -21,6 +26,7 @@ $divider: #b6b6b6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans', sans-serif;
 }
 header,
 #content,
@@ -39,7 +45,7 @@ footer {
     #content {       
         opacity: 1;
         background-color: $green;
-    	background: url('../assets/splashBackground-1440x900.jpg') no-repeat center center fixed;
+    	background: url('../assets/splash_bg.jpg') no-repeat center center fixed;
     	-webkit-background-size: cover;
       	-moz-background-size: cover;
       	background-size: cover;
@@ -49,12 +55,38 @@ footer {
         top: 0;
         bottom: 0;
         #welcome {
-            text-align: center;
+            * {
+                color: $light-text;
+            }
+            
+            a {
+                color: $brand-info;
+                
+                &:hover{
+                    color: $brand-success;
+                    text-decoration: none;
+                }
+                
+                &.btn-social {
+                    color: #fff;
+                }
+            }
+            
             .title-wrapper {
                 background: rgba(255, 193, 7, .7);
                 margin: 20px 0;
                 padding: 10px 0;
                 text-align: center;
+            }
+            .loginContainer {
+                box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+                padding: 43px 50px 50px 50px;
+                border-radius: 3px 40px 3px 49px;
+                -moz-border-radius: 3px 40px 3px 49px;
+                -webkit-border-radius: 3px 40px 3px 49px;
+                border: 0px solid #000000;
+                background: rgba(0,0,0,0.8);
+                margin-top: 100px;
             }
             h1:before {
                 background: url('../assets/gsa-icon-3.png') no-repeat;
@@ -67,10 +99,10 @@ footer {
                 width: 50px;
             }
             h1 {
-                color: $green;
+                color: $brand-primary;
                 display: inline;
                 font-size: 4em;
-                margin-left: 25px;
+                margin-left: 50px;
                 position: relative;
                 text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
             }
@@ -417,12 +449,8 @@ footer {
     overflow-y: auto;
 }
 
-graph {
-    height: 700px;
-}
-
-svg {
-    width: 100%;
+.graph {
+    text-align: center;
 }
 
 #content {
@@ -435,15 +463,42 @@ svg {
     height: 100%;
 }
 
+.margin-left{
+    margin-left:10px;
+}
+
+.margin-right{
+    margin-right:10px;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 @-moz-keyframes fadein {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            @-webkit-keyframes fadein {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            @keyframes fadein {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+
+}
