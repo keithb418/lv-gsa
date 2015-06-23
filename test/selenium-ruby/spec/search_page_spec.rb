@@ -9,13 +9,20 @@ describe 'Search page' do
 
   end
 
-
   it 'will have a search bar' do
-    expect(@driver.find_element(:id, "header").text).to match "MedChecker"
+    expect(@driver.find_element(:id, "input-group").text).to be_true
   end
 
-  it 'will auto complete drug name' do
+  xit 'will auto complete drug name' do
     expect(@driver.find_element(:id, "show-graph-btn").text).to eq "Show Graph"
+  end
+
+  xit 'will have a link to show the graph' do
+    # what does this show when there are meds listed yet
+    # flow:
+      # add a couple meds
+      # click the button
+      # check that the graph is displayed
   end
 
 end

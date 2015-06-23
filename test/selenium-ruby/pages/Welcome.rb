@@ -1,4 +1,4 @@
-class Splash
+class Welcome
 
 
   def initialize (driver)
@@ -11,7 +11,7 @@ class Splash
     return wait { @driver.find_element(:id, 'header').text }
   end
 
-  def return_splash_header
+  def return_welcome_header
     return wait { @driver.find_element(:id, 'welcome').text }
   end
   def return_proceed_button
