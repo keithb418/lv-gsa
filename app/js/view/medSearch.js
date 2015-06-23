@@ -14,7 +14,8 @@ define(function (require) {
     },
     events: {
       'keyup #med-search': 'search',
-      'click #action-btn': 'doAction'
+      'click #action-btn': 'doAction',
+      'click li button': 'closeResults'
     },
     initialize: function () {
       this.action = this.goToGraph;
@@ -37,6 +38,9 @@ define(function (require) {
     goToGraph: function () {
       window.location.hash = '#graph';
     },
+    closeResults: function () {
+      this.collection.reset();
+    },
     search: function () {
       var that = this;
       var criteria = this.ui.medSearch.val();
@@ -50,7 +54,6 @@ define(function (require) {
           that.collection.reset();
         }
       });
-      
     }
   });
 });
