@@ -444,6 +444,51 @@ footer {
     }
 }
 
+.med-search {
+    overflow-y: visible;
+    position: relative;
+    
+    .search-results {
+        border: 2px solid $green;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 10;
+        
+        li {
+            list-style-type: none;
+            margin: 0;
+        }
+        
+        button {
+            background-color: #fff;
+            border: 0 none;
+            color: $dark-text;
+            text-align: left;
+            width: 100%; 
+            
+            span {
+                color: $grey-text;
+                display: inline-block;
+                &.brand-name {
+                    color: $dark-text;
+                    display: block;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                &.match {
+                    align-items: flex-start;
+                    display: flex;
+                }
+                &.match-criteria {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
 .main-content {
     height: calc(100% - 44px);
     overflow-y: auto;
