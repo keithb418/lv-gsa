@@ -1,7 +1,7 @@
 {
   "name": "gsa",
   "title": "GSA",
-  "artifact-name": "",
+  "artifact-name": "med-checker",
   "description": "",
   "version": "0.0.0",
   "author": {
@@ -45,7 +45,11 @@
     "load-grunt-tasks": "~0.3.0",
     "time-grunt": "~0.2.8",
     "grunt-contrib-jasmine": "~0.8.0",
-    "grunt-template-jasmine-requirejs": "~0.2.0"
+    "grunt-template-jasmine-requirejs": "~0.2.0",
+
+    "grunt-tomcat-deploy": "~0.1.6",
+    "grunt-contrib-compress": "*",
+    "grunt-zip": "~0.10.0"
   },
   "engines": {
     "node": ">=0.10.0"

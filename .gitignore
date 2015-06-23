@@ -19,3 +19,4 @@ atlassian-ide-plugin.xml
 Gemfile.lock
 medchecker/www/*
 medchecker/platforms/ios/www/*
+dist.war
