@@ -6,13 +6,16 @@ define(function (require) {
   var AboutView = require('view/about');
   var MainLayout = require('view/mainLayout');
   var Subheader = require('view/subheader');
+  var Drugs = require('collection/drugs');
   
   return Backbone.Marionette.Controller.extend({
     initialize: function () {
       App.views = {};
+      App.collections = {};
       App.views.header = new HeaderView();
       App.views.footer = new FooterView();
       App.views.mainLayout = new MainLayout();
+      App.collections.medList = new Drugs();
       App.headerRegion.show(App.views.header);
       App.footerRegion.show(App.views.footer);
     },
@@ -57,7 +60,9 @@ define(function (require) {
       var MedSearch = require('view/medSearch');
       this.showMainLayout();
       App.views.mainLayout.subheaderRegion.show(new MedSearch());
-      App.views.mainLayout.mainContentRegion.show(new MedList());
+      App.views.mainLayout.mainContentRegion.show(new MedList({
+          "collection": App.collections.medList
+      }));
     }
     
   });
