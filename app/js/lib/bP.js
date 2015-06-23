@@ -2,7 +2,7 @@
 	var bP={};	
 	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
 	var id = "";
-	var c1=[-130, 40], c3=[-10, 140]; //Column positions of labels.
+	var c1=[-100, 40], c3=[-10, 140]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
 	
 	bP.partData = function(data,p){
@@ -230,8 +230,14 @@
 		bb = optBarWidth || bb;
 		id = data[0].id;
 		
-		if ($('body').width() <= 375) {
+		if ($('body').width() < 485) {
+			$('#graph > svg > g').attr("transform", "translate(110, 25)");
+			$('#graph > svg').css( "width", "375px");
 			bb = 75;
+		} else {
+			$('#graph > svg > g').attr("transform", "translate(150, 25)");
+			$('#graph > svg').css( "width", "500px");
+			bb = optBarWidth || 150;
 		}
 	
 		data.forEach(function(biP,s){
@@ -259,6 +265,13 @@
 					});	
 			});
 		});	
+		
+		if ($('body').width() < 485) {
+			$('#graph > svg .part1 .header line').attr("x2", 140);
+		} else {
+			$('#graph > svg .part1 .header line').attr("x2", 150);
+		}
+		
 	};
 	
 	bP.selectSegment = function(data, m, s){
