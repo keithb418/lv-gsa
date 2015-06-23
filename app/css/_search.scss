@@ -1,0 +1,11 @@
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	// changes the select2 icon from an arrow to a magnifying glass
+	@extend .fa;
+	@extend .fa-search;
+	height: 21px;
+	top: 7px;
+	b {
+		display:none;
+		visibility:hidden;
+	}
+}
