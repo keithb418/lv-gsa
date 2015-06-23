@@ -467,6 +467,12 @@ footer {
         width: 100%;
         z-index: 1;
         
+        &.open {
+            -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
         li {
             list-style-type: none;
             margin: 0;
@@ -490,6 +496,7 @@ footer {
             }
             
             span {
+                box-sizing: border-box;
                 color: $grey-text;
                 display: inline-block;
                 &.brand-name {
@@ -502,8 +509,12 @@ footer {
                     align-items: flex-start;
                     display: flex;
                 }
+                &.match-title {
+                    width: 45px;
+                }
                 &.match-criteria {
                     padding-left: 5px;
+                    width: calc(100% - 45px);
                 }
             }
         }

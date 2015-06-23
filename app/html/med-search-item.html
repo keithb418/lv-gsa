@@ -3,11 +3,7 @@
 	<% if (match.length) { %>
 		<span class="match">
 			<span class="match-title">Match:</span>
-			<span class="match-criteria">
-			<% _.each(match, function (criteria) { %>
-				<%- criteria %><br />
-			<% }); %>
-			</span>
+			<span class="match-criteria"><% _.each(match, function (criteria) { %><%- criteria %><br /><% }); %></span>
 		</span>
 	<% } %>
 </button>
