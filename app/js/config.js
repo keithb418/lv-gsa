@@ -12,7 +12,7 @@ require.config({
     'lv-widgets': '../lib/lv-widgets/dist/lv-widgets',
     'd3':'../lib/d3/d3',
     'bP':'lib/bP',
-    'snap': '../lib/snap.svg/dist/snap.svg'
+    'snap': '../lib/snap.svg/dist/snap.svg',
 
     //Plugins
     'text': '../lib/requirejs-text/text'
