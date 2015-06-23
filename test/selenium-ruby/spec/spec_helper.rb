@@ -13,7 +13,7 @@ RSpec.configure do |config|
     @accept_next_alert = true
     @driver.manage.timeouts.implicit_wait = 3
 
-    @app_url = "localhost:9000"
+    @app_url = "localhost:8080/med-checker"
     @driver.get(@app_url)
   end
 
