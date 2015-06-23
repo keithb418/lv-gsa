@@ -13,8 +13,7 @@
     "requirejs-text": "~2.0.10",
     "modernizr": "~2.7.1",
     "d3": "~3.5.5",
-    "snap.svg": "latest",
-    "select2": "~4.0.0"
+    "snap.svg": "latest"
   },
   "devDependencies": {}
 }

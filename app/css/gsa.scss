@@ -8,7 +8,6 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 @import 'vars';
 @import 'divider';
 @import 'forms';
-@import '../lib/select2/dist/css/select2.min.css';
 @import 'search';
 $header-height: 48px;
 $footer-height: 24px;
@@ -24,8 +23,6 @@ $divider: #b6b6b6;
 * {
     color: $dark-text;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans', sans-serif;
 }
 header,
