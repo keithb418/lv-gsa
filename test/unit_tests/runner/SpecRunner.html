@@ -55,6 +55,7 @@
     "lv-widgets": "../lib/lv-widgets/dist/lv-widgets",
     "d3": "../lib/d3/d3",
     "bP": "lib/bP",
+    "snap": "../lib/snap.svg/dist/snap.svg",
     "text": "../lib/requirejs-text/text",
     "Jasmine": "../../test/unit_tests/libs/jasmine/jasmine",
     "JasmineHtml": "../../test/unit_tests/libs/jasmine/jasmine-html",
@@ -103,7 +104,7 @@
       
     ],
     function(){
-      require(['../specs/testSpec.js','../../../.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+      require(['../specs/testSpec.js','../specs/welcomeSpec.js','../../../.grunt/grunt-contrib-jasmine/reporter.js'], function(){
         startTests();
       });
     }
