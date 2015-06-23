@@ -4,7 +4,7 @@ describe 'Menu' do
   # renaming to _draft - these tests are done in other scripts. no need for it anymore
   before(:all) do
     @welcome = Welcome.new (@driver)
-    @driver.find_element(:id, "proceed-to-app-btn").click
+    @welcome.return_proceed_button.click
   end
 
 

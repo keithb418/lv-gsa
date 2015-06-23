@@ -3,23 +3,30 @@ require_relative '../../selenium-ruby/pages/Welcome'
 describe 'Search page' do
   # renaming to _draft - these tests are done in other scripts. no need for it anymore
   before(:all) do
-    @splash = Splash.new (@driver)
+    @welcome = Welcome.new (@driver)
 
-    @driver.find_element(:id, "proceed-to-app-btn").click
+    @welcome.return_proceed_button.click
 
   end
 
   it 'will have a search bar' do
-    expect(@driver.find_element(:id, "input-group").text).to be_true
+    expect(@driver.find_element(:class, "med-search")).to be_truthy
   end
 
   xit 'will auto complete drug name' do
-    expect(@driver.find_element(:id, "show-graph-btn").text).to eq "Show Graph"
+    # basic outline
+      # enter first 3 chars of a med: adv
+      # let it autocomplete
+      # verify advil is returned
+  end
+
+  it 'will include a link to show the graph' do
+    expect(@driver.find_element(:id, "action-btn")).to be_truthy
   end
 
   xit 'will have a link to show the graph' do
-    # what does this show when there are meds listed yet
-    # flow:
+    # QUESTION: what does this show when there are meds listed yet
+    # basic outline:
       # add a couple meds
       # click the button
       # check that the graph is displayed

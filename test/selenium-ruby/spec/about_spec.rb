@@ -3,6 +3,7 @@ require_relative '../../selenium-ruby/pages/Welcome'
 describe 'About page' do
   before(:all) do
     @welcome = Welcome.new (@driver)
+    @welcome.return_proceed_button.click
   end
 
   xit 'will be linked to from the menu' do
