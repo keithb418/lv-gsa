@@ -19,11 +19,20 @@ define(function (require) {
     },
 
     events: {
-      'click .trigger': 'handleToggleMenu'
+      'click .trigger': 'handleToggleMenu',
+      'click :not(.menu)': 'closeMenu',
+      'click *': 'closeSearch'
     },
     
     ui: {
       'menu': '.menu'
+    },
+    
+    initialize: function () {
+      var that = this;
+      App.vent.on("close:menu", function () {
+        that.closeMenu();
+      });
     },
     
     onRender: function () {
@@ -56,7 +65,12 @@ define(function (require) {
           'path': self.paths.reset
         }, 800, mina.elastic);
       });
-    }
-        
+    },
+    closeMenu: function () {
+      this.ui.menu.removeClass('menu--open');
+    },
+    closeSearch: function () {
+      App.vent.trigger('close:results');
+    }   
   });
 });

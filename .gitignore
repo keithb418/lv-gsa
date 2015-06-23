@@ -13,6 +13,7 @@ test/temp
 app/lib
 .tmp
 test/lib/
+test/unit_tests/runner/*
 .settings/*
 *.iml
 atlassian-ide-plugin.xml

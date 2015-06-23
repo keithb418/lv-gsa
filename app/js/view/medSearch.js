@@ -3,10 +3,12 @@ define(function (require) {
   var App = require('app');
   var template = require('text!../../html/med-search.html');
   var MedSearchItem = require('view/medSearchItem');
+  var MedSearchEmpty = require('view/medSearchEmpty');
   var Drugs = require('collection/drugs');
 
   return Backbone.Marionette.CompositeView.extend({
 	  template: template,
+    emptyView: MedSearchEmpty,
     itemView: MedSearchItem,
     itemViewContainer: '#search-results',
     ui: {
@@ -19,8 +21,17 @@ define(function (require) {
       'click li button': 'closeResults'
     },
     initialize: function () {
+      var that = this;
+      
       this.action = this.goToGraph;
       this.collection = new Drugs();
+      
+      App.vent.on('close:results', function () {
+        that.closeResults();
+      });
+      App.vent.on('clear:search', function () {
+        that.ui.medSearch.val('');
+      });
     },
     onShow: function () {
       var that = this;
@@ -51,6 +62,7 @@ define(function (require) {
         if (criteria.length > 2) {
           that.collection.fetch({
             url: '../MedCheckerResources/drugs/search/' + criteria,
+            global: false,
             success: function () {
               that.ui.searchResults.addClass('open');
             }
