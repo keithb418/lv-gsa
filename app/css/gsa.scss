@@ -48,6 +48,7 @@ footer {
       	background-size: cover;
     	height: 100vh;
         margin: 0;
+        overflow: auto;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -543,4 +544,10 @@ footer {
     from { opacity: 0; }
     to   { opacity: 1; }
 
+}
+
+@media (max-width: 375px) {
+    #graph {
+        width: 375px;
+    }
 }
