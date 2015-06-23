@@ -10,7 +10,8 @@ define(function (require) {
     itemView: MedSearchItem,
     itemViewContainer: '#search-results',
     ui: {
-      'medSearch': '#med-search'
+      'medSearch': '#med-search',
+      'searchResults': '#search-results'
     },
     events: {
       'keyup #med-search': 'search',
@@ -40,6 +41,7 @@ define(function (require) {
     },
     closeResults: function () {
       this.collection.reset();
+      this.ui.searchResults.removeClass('open');
     },
     search: function () {
       var that = this;
@@ -48,10 +50,13 @@ define(function (require) {
       this.setupCall.done(function () {
         if (criteria.length > 2) {
           that.collection.fetch({
-            url: '../MedCheckerResources/drugs/search/' + criteria
+            url: '../MedCheckerResources/drugs/search/' + criteria,
+            success: function () {
+              that.ui.searchResults.addClass('open');
+            }
           });
         } else {
-          that.collection.reset();
+          that.closeResults();
         }
       });
     }

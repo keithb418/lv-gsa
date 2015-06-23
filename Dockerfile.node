@@ -1,0 +1,18 @@
+# rename from Dockerfile.node to Dockerfile to run the front end in a node server
+FROM ubuntu
+
+MAINTAINER Stephen Wright (clurect)
+#basic
+RUN apt-get update && apt-get install -y curl git-core
+RUN apt-get install -y build-essential
+
+#node
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
+EXPOSE 9000
+RUN apt-get install -y nodejs
+RUN rm -r /usr/bin/node
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN mkdir /nodeserver
+COPY . /nodeserver/
+WORKDIR /nodeserver
+CMD ["node", "server.js"]

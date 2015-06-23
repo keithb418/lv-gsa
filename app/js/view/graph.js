@@ -46,6 +46,8 @@ define(function (require) {
       var dataSet = this.getDataSet();
       
       var translate = {x: 150, y: 25};
+      
+      console.log('hi');
 
       var svg = d3.select('#'+this.id)
         .append('svg')
