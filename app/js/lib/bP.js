@@ -225,9 +225,14 @@
 	}
 	
 	bP.draw = function(data, svg, optHeight, optBarWidth){
+		
 		height = optHeight || height;
 		bb = optBarWidth || bb;
 		id = data[0].id;
+		
+		if ($('body').width() <= 375) {
+			bb = 75;
+		}
 	
 		data.forEach(function(biP,s){
 			svg.append("g")
