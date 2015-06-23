@@ -13,7 +13,6 @@ require.config({
     'd3':'../lib/d3/d3',
     'bP':'lib/bP',
     'snap': '../lib/snap.svg/dist/snap.svg',
-    'select2':'../lib/select2/dist/js/select2.full',
 
     //Plugins
     'text': '../lib/requirejs-text/text'

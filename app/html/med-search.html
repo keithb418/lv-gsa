@@ -1,12 +1,12 @@
 <div>
-	<div class="input-group">
-		<select class="med-search form-control" style="width:100%;" aria-describedby="basic-addon2">
-		  <option value="3620194" selected="selected">Search for a medicine...</option>
-		</select>
-	  <!--<input type="text" class="form-control" placeholder="Search for a medicine..." aria-describedby="basic-addon2">-->
-	  <!--<span class="input-group-addon fa fa-search" id="basic-addon2"></span>-->
+	<div class="med-search">
+		<div class="input-group">
+			<label for="med-search" class="sr-only">Search for a medicine</label>
+		  	<input id="med-search" type="text" class="form-control" placeholder="Search for a medicine..." aria-describedby="basic-addon2">
+		  	<span class="input-group-addon fa fa-search" id="basic-addon2"></span>
+		</div>
+		<ul id="search-results" class="search-results"></ul>
 	</div>
-	<ul id="search-results"></ul>
 	<p>Max of 10 drugs can be added to your list</p>
 	<button id="action-btn" class="btn btn-primary">
 		<span class="btn-icon fa fa-bar-chart"></span>
