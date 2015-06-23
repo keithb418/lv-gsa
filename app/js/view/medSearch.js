@@ -21,8 +21,14 @@ define(function (require) {
       'click li button': 'closeResults'
     },
     initialize: function () {
+      var that = this;
+      
       this.action = this.goToGraph;
       this.collection = new Drugs();
+      
+      App.vent.on('close:results', function () {
+        that.ui.medSearch.val('');
+      });
     },
     onShow: function () {
       var that = this;

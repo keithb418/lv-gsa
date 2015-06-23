@@ -12,6 +12,7 @@ define(function (require) {
     },
     "addItemToList": function(){
        App.collections.medList.add(this.model);
+       App.vent.trigger('close:results');
     }
   });
 });
