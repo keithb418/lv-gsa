@@ -2,7 +2,7 @@ require_relative '../../selenium-ruby/pages/Welcome'
 require_relative '../../selenium-ruby/pages/Menu'
 
 describe 'Menu' do
-  # renaming to _draft - these tests are done in other scripts. no need for it anymore
+  # GSA-7: Menu Button
   before(:all) do
     @welcome = Welcome.new (@driver)
     @menu = Menu.new (@driver)
@@ -10,7 +10,7 @@ describe 'Menu' do
   end
 
 
-  it 'will have the correct elements' do
+  it 'will have links to graph, medlist, about' do
     @menu.open_menu
     # this is the list the menu will have eventually
     # expect(element_present?(:link, "Med List")).to be_truthy
@@ -19,10 +19,10 @@ describe 'Menu' do
     expect(@menu.return_twitter_link).to be_truthy
     expect(@menu.return_google_link).to be_truthy
     expect(@menu.return_github_link).to be_truthy
-
-    @driver.find_element(:class, "trigger").click
+    @menu.open_menu # click open a 2nd time will close it
   end
 
+  # verify each link takes you to the correct page
   it 'clicking graph link will take you to the correct page' do
     @driver.get(@app_url)
     @welcome.return_proceed_button.click

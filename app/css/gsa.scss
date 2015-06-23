@@ -8,7 +8,6 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 @import 'vars';
 @import 'divider';
 @import 'forms';
-@import '../lib/select2/dist/css/select2.min.css';
 @import 'search';
 $header-height: 48px;
 $footer-height: 24px;
@@ -24,8 +23,6 @@ $divider: #b6b6b6;
 * {
     color: $dark-text;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans', sans-serif;
 }
 header,
@@ -448,6 +445,51 @@ footer {
     }
     .main-content {
         height: calc(100% - 75px);
+    }
+}
+
+.med-search {
+    overflow-y: visible;
+    position: relative;
+    
+    .search-results {
+        border: 2px solid $green;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 10;
+        
+        li {
+            list-style-type: none;
+            margin: 0;
+        }
+        
+        button {
+            background-color: #fff;
+            border: 0 none;
+            color: $dark-text;
+            text-align: left;
+            width: 100%; 
+            
+            span {
+                color: $grey-text;
+                display: inline-block;
+                &.brand-name {
+                    color: $dark-text;
+                    display: block;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                &.match {
+                    align-items: flex-start;
+                    display: flex;
+                }
+                &.match-criteria {
+                    padding-left: 5px;
+                }
+            }
+        }
     }
 }
 
