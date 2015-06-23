@@ -29,7 +29,7 @@ define(function (require) {
             // since we are using custom formatting functions we do not need to
             // alter the remote JSON data
             return {
-              results: data
+              results: data.brandName
             };
           },
           cache: true
@@ -58,7 +58,7 @@ define(function (require) {
       '</div>' +
       '<div clas="col-sm-10">' +
       '<div class="clearfix">' +
-      '<div class="col-sm-6">' + med.openfda.brand_name[0] + '</div>' +
+      '<div class="col-sm-6">' + med.openfda.generic_name[0] + '</div>' +
       //'<div class="col-sm-3"><i class="fa fa-code-fork"></i> ' + med.forks_count + '</div>' +
       //'<div class="col-sm-2"><i class="fa fa-star"></i> ' + med.stargazers_count + '</div>' +
       '</div>';      
