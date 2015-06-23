@@ -19,11 +19,19 @@ define(function (require) {
     },
 
     events: {
-      'click .trigger': 'handleToggleMenu'
+      'click .trigger': 'handleToggleMenu',
+      'click :not(.menu)': 'closeMenu'
     },
     
     ui: {
       'menu': '.menu'
+    },
+    
+    initialize: function () {
+      var that = this;
+      App.vent.on("closeMenu", function () {
+        that.closeMenu();
+      });
     },
     
     onRender: function () {
@@ -56,7 +64,9 @@ define(function (require) {
           'path': self.paths.reset
         }, 800, mina.elastic);
       });
-    }
-        
+    },
+    closeMenu: function () {
+      this.ui.menu.removeClass('menu--open');
+    }   
   });
 });

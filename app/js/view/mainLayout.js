@@ -11,7 +11,8 @@ define(function (require) {
       'mainContentRegion': '.main-content'
     },
     events: {
-      'click #show-graph-btn': 'showGraph'
+      'click #show-graph-btn': 'showGraph',
+      'click *': 'triggerEvent'
     },
     showGraph: function () {
       window.location.hash = '#graph';
@@ -21,6 +22,9 @@ define(function (require) {
     },
     onClose: function () {
       this.rendered = false;
+    },
+    triggerEvent: function () {
+      App.vent.trigger('closeMenu');
     }
   });
 });
