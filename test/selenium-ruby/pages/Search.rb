@@ -19,8 +19,8 @@ class Search
     input_field.send_keys query
   end
 
-  def expected_result_present? (expected_result)
-    expect(@driver.find_element(:css, "li.select2-results__option").text).to match "OXYCODONE HYDROCHLORIDE AND ACETAMINOPHEN"
+  def return_result_text
+    wait { @driver.find_element(:css, "li.select2-results__option").text }
 
   end
 end
