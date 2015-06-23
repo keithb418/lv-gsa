@@ -125,13 +125,6 @@
 			.attr("text-anchor","start" )
 			.style('font-size', '15');
 			
-		// mainbar.append("rect").attr("class", "barline")
-		// 	.attr("x", c1[p] - 10).attr("y",function(d){ return d.middle - d.height; })
-		// 	.attr("width", -(c1[p] - 10)).attr("height", "1")
-		// 	.style("stroke-width","0.5")
-		// 	.style("stroke", "#b6b6b6")
-		// 	.style("fill","#b6b6b6");
-			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()
 			.append("rect").attr("class","subbar")
