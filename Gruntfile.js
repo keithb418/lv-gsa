@@ -2,6 +2,7 @@
 var LIVERELOAD_PORT = 9000;
 var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var pkg = require('./package.json');
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -33,7 +34,8 @@ module.exports = function (grunt) {
       build: {
         files: [
           '<%= yeoman.app %>/js/**/*',
-          '<%= yeoman.app %>/css/**/*'
+          '<%= yeoman.app %>/css/**/*',
+          '<%= yeoman.app %>/html/**/*'
         ],
         tasks: ['devBuild']
       }
@@ -283,8 +285,33 @@ module.exports = function (grunt) {
           logConcurrentOutput: true
         }
       }
-    }
+    },
+    tomcat_deploy: {
+      host: 'localhost',
+      login: 'admin',
+      password: 'Agilexadmin99$',
+      path: '/' + pkg['artifact-name'],
+      port: 8080,
+      dist: 'dist',
+      war: 'build/libs/' + pkg['artifact-name'] + '.war',
+      deploy: '/manager/text/deploy',
+      undeploy: '/manager/text/undeploy'
+    },
+    compress: {
+      war: {
+        options: {
+          archive: 'build/libs/' + pkg['artifact-name'] + '.war',
+          mode: 'zip'
+        },
+        files: [
+          {
+            cwd: 'dist/', expand: true, src: ['**/*', '!**/*.tgz']
+          }
+        ]
+      }
+    } //end compress
   });
+  grunt.loadNpmTasks('grunt-tomcat-deploy');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
 
@@ -323,4 +350,12 @@ module.exports = function (grunt) {
   grunt.registerTask('serve', ['devBuild', 'concurrent:dev']);
   
   grunt.registerTask('test', ['jasmine:app']);
+  grunt.registerTask('deploy', function(arg) {
+    if(arg==='d') {
+      grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+    }
+    else if (arg==='production') {
+      //grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+    }
+  });
 };
