@@ -27,6 +27,9 @@ define(function (require) {
       this.collection = new Drugs();
       
       App.vent.on('close:results', function () {
+        that.closeResults();
+      });
+      App.vent.on('clear:search', function () {
         that.ui.medSearch.val('');
       });
     },

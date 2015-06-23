@@ -20,7 +20,8 @@ define(function (require) {
 
     events: {
       'click .trigger': 'handleToggleMenu',
-      'click :not(.menu)': 'closeMenu'
+      'click :not(.menu)': 'closeMenu',
+      'click *': 'closeSearch'
     },
     
     ui: {
@@ -29,7 +30,7 @@ define(function (require) {
     
     initialize: function () {
       var that = this;
-      App.vent.on("closeMenu", function () {
+      App.vent.on("close:menu", function () {
         that.closeMenu();
       });
     },
@@ -67,6 +68,9 @@ define(function (require) {
     },
     closeMenu: function () {
       this.ui.menu.removeClass('menu--open');
+    },
+    closeSearch: function () {
+      App.vent.trigger('close:results');
     }   
   });
 });

@@ -24,7 +24,8 @@ define(function (require) {
       this.rendered = false;
     },
     triggerEvent: function () {
-      App.vent.trigger('closeMenu');
+      App.vent.trigger('close:menu');
+      App.vent.trigger('close:results');
     }
   });
 });
