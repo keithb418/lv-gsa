@@ -16,9 +16,6 @@ define(function (require) {
       App.headerRegion.show(App.views.header);
       App.footerRegion.show(App.views.footer);
     },
-    showIndex: function () {
-      App.Resources.checkROA();
-    },
     showGraph: function () {
       var GraphView = require('view/graph');
       this.showMainLayout();

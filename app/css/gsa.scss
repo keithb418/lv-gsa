@@ -459,6 +459,10 @@ footer {
     
     .search-results {
         border: 2px solid $green;
+        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        display: none;
         max-height: 200px;
         overflow-y: auto;
         padding: 0;
@@ -468,9 +472,7 @@ footer {
         z-index: 1;
         
         &.open {
-            -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-            -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            display: block;
         }
         
         li {
@@ -481,6 +483,14 @@ footer {
             &:last-child {
                 border-bottom: 0 none;
             }
+        }
+        
+        .no-results {
+            background-color: #fff;
+            color: $dark-text;
+            display: block;
+            font-size: 16px;
+            padding: 10px;
         }
         
         button {
