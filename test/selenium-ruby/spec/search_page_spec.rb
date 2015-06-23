@@ -1,26 +1,28 @@
 require_relative '../../selenium-ruby/pages/Welcome'
+require_relative '../../selenium-ruby/pages/Search'
 
 describe 'Search page' do
-  # renaming to _draft - these tests are done in other scripts. no need for it anymore
+  # GSA-2: Search Meds
   before(:all) do
     @welcome = Welcome.new (@driver)
+    @search = Search.new (@driver)
 
     @welcome.return_proceed_button.click
   end
 
   it 'will have a search bar' do
-    expect(@driver.find_element(:class, 'select2-selection')).to be_truthy
+    expect(@search.return_search_field).to be_truthy
   end
 
   it 'will autocomplete medicine names' do
-    @driver.find_element(:class, 'select2-selection').click
-    @driver.find_element(:css, "input.select2-search__field").clear
-    @driver.find_element(:css, "input.select2-search__field").send_keys "acetaminophen"
+    @search.return_search_field.click
+    @search.enter_search_term('acetaminophen')
     sleep 1
     expect(@driver.find_element(:css, "li.select2-results__option").text).to match "OXYCODONE HYDROCHLORIDE AND ACETAMINOPHEN"
     @driver.find_element(:class, 'select2-selection').click
 
   end
+
   it 'will return no results if input is zzz' do
     # basic outline
       # enter first 3 chars of a med: adv
@@ -38,6 +40,7 @@ describe 'Search page' do
 
   end
 
+  # these are really GSA-3 or 4
   it 'will include a link to show the graph' do
     expect(@driver.find_element(:id, "action-btn")).to be_truthy
 
