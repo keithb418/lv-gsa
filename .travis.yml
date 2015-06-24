@@ -1,23 +1,23 @@
 language: node_js
-node_js: 
- - "0.12"
+node_js:
+- '0.12'
 before_install:
- - "export DISPLAY=:99.0"
- - "sh -e /etc/init.d/xvfb start"
-install: 
- - gem install bundler
- - bundle install
- - npm install
- - npm install -g bower
- - npm install -g grunt-cli
- - bower install
- - grunt devBuild
- - node server.js &
- - sleep 3
- - cd test/selenium-ruby
- - rspec
- - exit 0
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- gem install bundler
+- bundle install
+- npm install
+- npm install -g bower
+- npm install -g grunt-cli
+- bower install
+- grunt deploy:production
+- exit 0
 notifications:
- email:
-  on_success: never
-  on_failure: always
+  email:
+    on_success: never
+    on_failure: always
+env:
+  global:
+  - secure: HlaeZuaXreNmDmFbIr2ANeie2sseiNy3/DnAWkhCz0SeasXToQex3zdbh7ezEIXaVcOONSBi0T8upK8ufJKESCpcdXJCcdS78KDw4ZXhZ87qLPuhJfULli31fPgpIi5iefCVagzNin0N6BNc9uAkimhdKCwsFDF3GYZuMQA1Hk9lQeLc2H2b/2a5nannip7dH1ydvvDX8JMXQpS+Csue51bxTTuDyEMZ0BMCRBIOGb1NCTrFcG6bqpdpnUr4NyERAa5J6pMbvccw37SYxqV8K3nsvQnOOsmIWLAO5brBZhrrU14E6WK07jVZRM0h+CZh8vQ/RdIevVilgTUCtS5ifm7MYYV0WveSIag7iL+FnO8PexScEmlhqKRpTZH7PfJo1Vgqds/5HEVSrkd2yZ+ARvhUtLbPOZcmoLArdCsGDWieYx3MSedv5QGeBJ7X+0jST360Sg4C/KjFkO4v7HZmPyOpwglDobJbmUtjqGVelGaN86rqOT46OKXa5i9NP3pldhURu+rFAQivU3jASyCn6tj3Xd6/sIGbdXR6WEi9ogtvNtTH8mOoW7SjypeODIELCqVFBVMO2QP6la1vQXdGeGQNEsAEehrnx2Yb+0KWh6CYjt4mDPzDLrRZmyte5FJuh2IM8lh1TyYAFeEZ+zpWUsKL3MiJEnTaLkuP/EtVktc=
+  - secure: nGYvcxNmE4VZUlL1sQfBonYMXmR9jqGhz+ysnOiTO23AfRyFXGpVRCtk2uqurCLJrf/ghYm+8T1G5sJbOvnTjC0ayQwpzd7vHwQQzpFyvhGxOMoxOOR8glCnQBBFHW4HpZQcROCM5FDPp43RpnEGV3zQdNDhdkrAIP1+KXDpVg+s9qhF+H+A6Yd7gIPZNqKyZTaXZ4pdLcOoXBS+44gzG4NGFakx5KxLEsjfjdccv844qOQ7pfMc1yDtEBtu5VHENk3jjH7NLFx/GTm1opb2Axupj8RNqkr5/7pG5oW9c8TSK4Rwjw09h3vGy/eFI9YSPUzj+3sApjDVAKYIwoCA03j67XcFyvlUwshtSv3HcGPJS+giT6RDwO9pScPOeq92DyLAGHSBcgQjGBGbn91PAi7h08Ca1rf+SQRcSf17UMoRFw34Ya27W59W+pkP+u+G6dpOIxwXo81SSG0+WwdtWi4MpOM+emI6oOI2xEt0K0iNBM3UIdekNo87pfjvgWib8hWmE9HgoGuVeQEESoAwaujzseF77Vmlwqe823qQ3+daRSW3/0o00KrfsI+14tCJuEWUfITCYKvmawSXi4O9dhCaWgX6i9UtT6fl2tCkcbZQ4VpC9jirsv7FVrOtO445ADVmp+lN3zAWHIqbtJSHcRHWjaLo7gLIVeuXCthJq2w=

@@ -12,6 +12,7 @@ define(function (require) {
     initialize: function () {
       App.views = {};
       App.collections = {};
+      App.selectedMeds = [];
       App.views.header = new HeaderView();
       App.views.footer = new FooterView();
       App.views.mainLayout = new MainLayout();

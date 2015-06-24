@@ -335,7 +335,6 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-
   grunt.registerTask('devBuild', [
     'clean:dist',
     'compass:dev',
@@ -355,7 +354,14 @@ module.exports = function (grunt) {
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
     else if (arg==='production') {
-      //grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+      grunt.config('tomcat_deploy.host', process.env.AZURE_TC_HOST);
+      grunt.config('tomcat_deploy.password', process.env.AZURE_TC_PWD);
+      grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+    }
+    else if (arg==='docker') {
+      grunt.config('tomcat_deploy.host', process.env.DOCKER_TC_HOST);
+      grunt.config('tomcat_deploy.password', process.env.DOCKER_TC_PWD);
+      grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
   });
 };

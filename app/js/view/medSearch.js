@@ -18,7 +18,7 @@ define(function (require) {
       'actionBtnIcon': '#action-btn .btn-icon'
     },
     events: {
-      'keyup #med-search': 'search',
+      'keydown #med-search': 'search',
       'click #action-btn': 'doAction',
       'click li button': 'closeResults'
     },
@@ -61,7 +61,10 @@ define(function (require) {
       window.location.hash = '#graph';
     },
     deleteItems: function () {
-      
+      App.collections.medList.remove(App.selectedMeds);
+      App.selectedMeds = [];
+      this.updateAction();
+      this.showHideActionBtn();
     },
     showHideActionBtn: function () {
       var action = 'add';
@@ -79,15 +82,14 @@ define(function (require) {
         this.ui.searchResults.removeClass('open');
       }
     },
-    search: function () {
+    search: function (e) {
       var that = this;
       var criteria = this.ui.medSearch.val();
       
       this.setupCall.done(function () {
-        if (criteria.length > 2) {
+        if (e.which === 13 && criteria.length) {
           that.collection.fetch({
             url: '../MedCheckerResources/drugs/search/' + criteria,
-            global: false,
             success: function () {
               that.ui.searchResults.addClass('open');
             }
@@ -98,7 +100,7 @@ define(function (require) {
       });
     },
     updateAction: function () {
-      var numChecked = $('.med-list input[type="checkbox"]:checked').length;
+      var numChecked = App.selectedMeds.length;
       var icon = 'fa-bar-chart';
       var action = this.goToGraph;
       

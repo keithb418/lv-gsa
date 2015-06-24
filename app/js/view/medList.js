@@ -6,6 +6,13 @@ define(function (require) {
   return Backbone.Marionette.CollectionView.extend({
     tagName: "ul",
     className: "med-list",
-    itemView: MedListItem
+    itemView: MedListItem,
+    initialize: function () {
+      var that = this;
+      
+      App.vent.on('refresh:med:list', function () {
+        that.render();
+      });
+    }
   });
 });

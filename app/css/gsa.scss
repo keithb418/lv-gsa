@@ -12,10 +12,10 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 $header-height: 48px;
 $footer-height: 24px;
 
-$dark-primary: #388E3C;
-$primary: #4CAF50;
-$light-primary: #C8E6C9;
-$action: #2196f3;
+$dark-primary: #1976D2;
+$primary: #2196f3;
+$light-primary: #BBDEFB;
+$action: #4CAF50;
 $dark-text: #212121;
 $grey-text: #727272;
 $divider: #b6b6b6;
@@ -146,7 +146,7 @@ footer {
 .med-list {
     color: #fff;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     width: 100%;
     
     * {
@@ -156,7 +156,10 @@ footer {
     .med-list-item {
         align-items: center;
         background-color: #fff;
-        border-bottom: 1px solid $divider;
+        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        margin-bottom: 10px;
         width: inherit;
     }
     
@@ -164,7 +167,7 @@ footer {
         background: transparent;
         border: 0 none;
         box-sizing: border-box;
-        color: $grey-text;
+        color: $dark-text;
         font-size: 16px;
         height: 100%;
         padding: 10px;
@@ -220,6 +223,23 @@ footer {
                 top: 8px;
                 width: 20px;
             }
+        }
+    }
+    
+    span {
+        box-sizing: border-box;
+        color: $grey-text;
+        display: inline-block;
+        font-size: 14px;
+        &.match {
+            align-items: flex-start;
+            display: flex;
+        }
+        &.match-title {
+            width: 100px;
+        }
+        &.match-criteria {
+            width: calc(100% - 105px);
         }
     }
     
@@ -444,6 +464,7 @@ footer {
     height: 44px;
     padding: 5px;
     position: relative;
+    z-index: 1;
     
     * {
         color: #fff;
@@ -629,11 +650,10 @@ footer {
                     display: flex;
                 }
                 &.match-title {
-                    width: 45px;
+                    width: 100px;
                 }
                 &.match-criteria {
-                    padding-left: 5px;
-                    width: calc(100% - 45px);
+                    width: calc(100% - 105px);
                 }
             }
         }
