@@ -1,45 +1,52 @@
 require_relative '../../selenium-ruby/pages/Welcome'
+require_relative '../../selenium-ruby/pages/AddMeds'
 
 describe 'Add Meds functionality' do
   # GSA-3: Add Meds
   before(:all) do
     @welcome = Welcome.new (@driver)
+    @search = Search.new (@driver)
+    @add_meds = AddMeds.new (@driver)
 
     @welcome.return_proceed_button.click
   end
 
-  it 'will return existing list alphanumeric order' do
-    #stuff goes here
+  it 'will allow users to add a medication to the list' do
+    @add_meds.add_a_med('benicar')
+    expect((@add_meds.return_med_list_array[0].text).upcase).to match 'benicar'.upcase
+  end
+
+  it 'will return list in order entered (most recent listed first)' do
+    @add_meds.add_a_med('crestor') #2
+    @add_meds.add_a_med('relpax')
+    expect((@add_meds.return_med_list_array[0].text).upcase).to match 'relpax'.upcase
   end
 
   it 'will have a max of 10 meds' do
-    # need to add 10 and verify can't add an 11th
+    # first few are from previous it blocks
+    @add_meds.add_a_med('crest')
+    @add_meds.add_a_med('aspirin') # 5
+    @add_meds.add_a_med('tylenol')
+    @add_meds.add_a_med('advil')
+    @add_meds.add_a_med('cold') # 8
+    @add_meds.add_a_med('imitrex')
+    @add_meds.add_a_med('accupril') #10
+    # at this point the input field should be disabled
+    expect(@driver.find_element(:id, 'med-search').enabled?).to be false
   end
 
   it 'will save to session storage' do
-    # quit the driver and bring it back up, should still have list?
+    @driver.get(@app_url)
+    @welcome.return_proceed_button.click
+    expect((@add_meds.return_med_list_array[0].text).upcase).to match 'accupril'.upcase
   end
 
   it 'will allow user to remove a med from list' do
-
-  end
-  # these are really GSA-3 or 4
-  it 'will include a link to show the graph' do
-    expect(@driver.find_element(:id, "action-btn")).to be_truthy
-
-  end
-
-  it 'will take users to the graph when graph link clicked' do
-    @driver.find_element(:id, "action-btn").click
-    sleep 1
-    expect(@driver.find_element(:class, 'subheader').text).to match 'Medication Warnings Graph'
-
-    # QUESTION: what does this show when there are meds listed yet
-    # basic outline:
-    # add a couple meds
-    # click the button
-    # check that the graph page is displayed
-    # Title of that page is:  Medication Warnings Graph
+    @add_meds.return_med_list_checkbox_array[0].click
+    @add_meds.return_med_list_checkbox_array[1].click
+    @add_meds.return_med_list_checkbox_array[2].click
+    @driver.find_element(:id, 'action-btn').click
+    expect((@add_meds.return_med_list_array[0].text).upcase).to match 'advil'.upcase
   end
 
 end
