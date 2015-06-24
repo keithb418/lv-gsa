@@ -1,3 +1,9 @@
 <input id="<%- id %>" type="checkbox" value="<%- id %>" class="sr-only" />
 <label for="<%- id %>"><span class="sr-only">Select Med</span></label>
-<button><%- brandName %></button>
+<button>
+	<%- brandName %>
+	<span class="match">
+		<span class="match-title">Manufacturer:</span>
+		<span class="match-criteria"><%- manufacturerName %></span>
+	</span>		
+</button>

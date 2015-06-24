@@ -166,7 +166,7 @@ footer {
         background: transparent;
         border: 0 none;
         box-sizing: border-box;
-        color: $grey-text;
+        color: $dark-text;
         font-size: 16px;
         height: 100%;
         padding: 10px;
@@ -222,6 +222,23 @@ footer {
                 top: 8px;
                 width: 20px;
             }
+        }
+    }
+    
+    span {
+        box-sizing: border-box;
+        color: $grey-text;
+        display: inline-block;
+        font-size: 14px;
+        &.match {
+            align-items: flex-start;
+            display: flex;
+        }
+        &.match-title {
+            width: 100px;
+        }
+        &.match-criteria {
+            width: calc(100% - 105px);
         }
     }
     
@@ -626,11 +643,10 @@ footer {
                     display: flex;
                 }
                 &.match-title {
-                    width: 45px;
+                    width: 100px;
                 }
                 &.match-criteria {
-                    padding-left: 5px;
-                    width: calc(100% - 45px);
+                    width: calc(100% - 105px);
                 }
             }
         }

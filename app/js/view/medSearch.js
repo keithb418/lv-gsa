@@ -18,7 +18,7 @@ define(function (require) {
       'actionBtnIcon': '#action-btn .btn-icon'
     },
     events: {
-      'keyup #med-search': 'search',
+      'keydown #med-search': 'search',
       'click #action-btn': 'doAction',
       'click li button': 'closeResults'
     },
@@ -82,15 +82,14 @@ define(function (require) {
         this.ui.searchResults.removeClass('open');
       }
     },
-    search: function () {
+    search: function (e) {
       var that = this;
       var criteria = this.ui.medSearch.val();
       
       this.setupCall.done(function () {
-        if (criteria.length > 2) {
+        if (e.which === 13 && criteria.length) {
           that.collection.fetch({
             url: '../MedCheckerResources/drugs/search/' + criteria,
-            global: false,
             success: function () {
               that.ui.searchResults.addClass('open');
             }

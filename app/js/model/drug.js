@@ -6,7 +6,8 @@ define(function (require) {
     defaults: {
       id: '',
       brandName: '',
-      match: []
+      match: [],
+      manufacturerName: ''
     }
 
   });
