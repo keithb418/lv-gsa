@@ -6,6 +6,12 @@ define(function (require) {
   return Backbone.Marionette.ItemView.extend({
 	  tagName: 'li',
     className: 'med-list-item',
-    template: _.template(template)
+    template: _.template(template),
+    events: {
+      'change input': 'updateActionBtn'
+    },
+    updateAction: function () {
+      App.vent.trigger('update:action');
+    }
   });
 });

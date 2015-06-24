@@ -157,23 +157,28 @@ footer {
         background-color: #fff;
         border-bottom: 1px solid $divider;
         display: flex;
-        padding: 10px;
         width: inherit;
     }
     
     button {
         background: transparent;
         border: 0 none;
+        box-sizing: border-box;
         color: $grey-text;
         font-size: 16px;
+        height: 100%;
+        padding: 10px;
+        text-align: left;
+        width: calc(100% - 30px);
     }
     
     input[type="checkbox"]{
         & + label {
             background-color: #fff;
+            cursor: pointer;
             display: inline-block;
             height: 30px;
-            margin: 0;
+            margin: 0 0 0 5px;
             padding: 5px;
             position: relative;
             width: 30px;
