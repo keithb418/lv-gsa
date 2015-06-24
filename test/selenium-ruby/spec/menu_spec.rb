@@ -21,20 +21,19 @@ describe 'Menu' do
   it 'clicking graph link will take you to the correct page' do
     @menu.open_menu
     @menu.return_graph_link.click
-    expect(return_subheader_text).to match 'Medication Warnings Graph'
+    expect(@menu.return_subheader_text).to match 'Medication Warnings Graph'
   end
 
   it 'clicking about will take you to the correct page' do
     @menu.open_menu
     @menu.return_about_link.click
-    expect(return_subheader_text).to match 'About'
+    expect(@menu.return_subheader_text).to match 'About'
   end
 
   it 'clicking med list link will take you to the correct page' do
     @menu.open_menu
     @menu.return_medlist_link.click
-    expect(return_subheader_text).to match 'Search for a medicine'
+    expect(@menu.return_subheader_text).to match 'Search for a medicine'
   end
 
 end
-

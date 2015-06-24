@@ -16,7 +16,7 @@ describe 'About page' do
   it 'will be reachable to from the menu' do
     @menu.open_menu
     @menu.return_about_link.click
-    expect(@driver.find_element(:class, 'subheader').text).to match 'About'
+    expect(@menu.return_subheader_text).to match 'About'
   end
 
   it 'will contain the statement of purpose' do
@@ -32,6 +32,7 @@ describe 'About page' do
     expect(@about.return_h2_array[2].text).to eq "Copyright Waiver"
   end
 
+  # will this be accessible from the med list page - we talked about having the med name be clickable
 
 end
 
