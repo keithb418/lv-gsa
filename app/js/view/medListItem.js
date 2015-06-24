@@ -8,7 +8,7 @@ define(function (require) {
     className: 'med-list-item',
     template: _.template(template),
     events: {
-      'change input': 'updateActionBtn'
+      'change input': 'updateAction'
     },
     updateAction: function () {
       App.vent.trigger('update:action');
