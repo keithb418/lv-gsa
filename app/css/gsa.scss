@@ -153,8 +153,10 @@ footer {
     }
     
     .med-list-item {
+        align-items: center;
         background-color: #fff;
         border-bottom: 1px solid $divider;
+        display: flex;
         padding: 10px;
         width: inherit;
     }
@@ -166,13 +168,45 @@ footer {
         font-size: 16px;
     }
     
-    // input[type="checkbox"] + label {
-    //     background-color: #fff;
-    //     border: 2px solid #4CAF50;
-    //     border-radius: 4px;
-    //     height: 30px;
-    //     width: 30px;
-    // }
+    input[type="checkbox"]{
+        & + label {
+            background-color: #fff;
+            display: inline-block;
+            height: 30px;
+            margin: 0;
+            padding: 5px;
+            position: relative;
+            width: 30px;
+            
+            &:before {
+                border: 2px solid $grey-text;
+                border-radius: 4px;
+                content: '';
+                display: block;
+                height: 20px;
+                width: 20px;
+            }
+        }
+        
+        &:checked + label {
+            &:before {
+                border: 2px solid $action;
+            }
+            &:after {
+                color: $action;
+                content: '\f00c';
+                display: block;
+                font-family: 'FontAwesome';
+                font-size: 20px;
+                height: 20px;
+                left: 10px;
+                position: absolute;
+                top: -2px;
+                width: 20px;
+            }
+        }
+    }
+    
 }
 
 .container-full {
