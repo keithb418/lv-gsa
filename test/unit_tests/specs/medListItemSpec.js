@@ -22,11 +22,11 @@ define(function (require) {
 			
 			spyOn(App.vent, 'trigger').and.callThrough();
 			medListItem.updateAction({
-				currentTarget: $('input')
+				currentTarget: medListItem.$el.find('input')
 			});
 			
 			expect(App.vent.trigger).toHaveBeenCalledWith('update:action');
-			expect(App.selectedMeds.indexOf(0)).not.toEqual(-1);
+			expect(App.selectedMeds.indexOf("12345")).not.toEqual(-1);
 		});
 		it('Should be unchecked, then removed from the list', function () {
 			$('input').prop("checked", false);
