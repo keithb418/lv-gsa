@@ -12,8 +12,7 @@ define(function (require) {
     },
     "addItemToList": function(){
       if (App.collections.medList.length < 10) {
-        App.collections.medList.add(this.model);
-        App.collections.medList.sort();
+        App.collections.medList.unshift(this.model);
         App.vent.trigger('refresh:med:list');
       }
       App.vent.trigger('clear:search');
