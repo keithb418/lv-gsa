@@ -1,28 +1,37 @@
 require_relative '../../selenium-ruby/pages/Welcome'
+require_relative '../../selenium-ruby/pages/Menu'
+require_relative '../../selenium-ruby/pages/About'
 
 describe 'About page' do
   #GSA-6: About page
   before(:all) do
     @welcome = Welcome.new (@driver)
+    @menu = Menu.new (@driver)
+    @about = About.new (@driver)
+
     @welcome.return_proceed_button.click
   end
 
 
-  xit 'will contain about text about the app' do
-    # placeholder test until about page exists
+  it 'will be reachable to from the menu' do
+    @menu.open_menu
+    @menu.return_about_link.click
+    expect(@driver.find_element(:class, 'subheader').text).to match 'About'
   end
 
-  xit 'will contain a disclaimer' do
+  it 'will contain the statement of purpose' do
     # put disclaimer check here
+    expect(@about.return_h2_array[0].text).to eq "Statement of Purpose"
   end
 
-  xit 'will contain copyright text' do
-    # placeholder test until about page exists
+  it 'will contain the disclaimer' do
+    expect(@about.return_h2_array[1].text).to eq "Disclaimer"
   end
 
-  xit 'will be reachable to from the menu' do
-    # placeholder test until about page exists
+  it 'will contain copyright text' do
+    expect(@about.return_h2_array[2].text).to eq "Copyright Waiver"
   end
+
 
 end
 

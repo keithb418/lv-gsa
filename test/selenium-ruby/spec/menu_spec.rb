@@ -9,7 +9,6 @@ describe 'Menu' do
     @welcome.return_proceed_button.click
   end
 
-
   it 'will have links to graph, medlist, about' do
     @menu.open_menu
     expect(@menu.return_graph_link).to be_truthy
@@ -20,26 +19,21 @@ describe 'Menu' do
 
   # verify each link takes you to the correct page
   it 'clicking graph link will take you to the correct page' do
-    # @driver.get(@app_url)
-    # @welcome.return_proceed_button.click
     @menu.open_menu
     @menu.return_graph_link.click
-    expect(@driver.find_element(:class, 'subheader').text).to match 'Medication Warnings Graph'
+    expect(return_subheader_text).to match 'Medication Warnings Graph'
   end
+
   it 'clicking about will take you to the correct page' do
-    @driver.get(@app_url)
-    @welcome.return_proceed_button.click
     @menu.open_menu
     @menu.return_about_link.click
-    # expect(@driver.find_element(:class, 'subheader').text).to match 'Medication Warnings Graph'
-    # change the above to about and verify on the about page
+    expect(return_subheader_text).to match 'About'
   end
+
   it 'clicking med list link will take you to the correct page' do
-    # @driver.get(@app_url)
-    # @welcome.return_proceed_button.click
     @menu.open_menu
     @menu.return_medlist_link.click
-    expect(@driver.find_element(:class, 'subheader').text).to match 'Search for a medicine'
+    expect(return_subheader_text).to match 'Search for a medicine'
   end
 
 end

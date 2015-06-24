@@ -8,15 +8,15 @@ describe 'Label page' do
     @welcome.return_proceed_button.click
   end
 
-  it 'will show full label info' do
+  xit 'will show full label info' do
     # tests here
   end
 
-  it 'will allow user to tap warning to show cnnected meds' do
+  xit 'will allow user to tap warning to show cnnected meds' do
     # tests here
   end
 
-  it 'will allow user to tap a med name twice to go to label page' do
+  xit 'will allow user to tap a med name twice to go to label page' do
     # tests here
   end
 

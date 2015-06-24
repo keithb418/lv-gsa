@@ -1,12 +1,12 @@
-class Menu
+class About
 
 
   def initialize (driver)
     @driver =  driver
   end
 
-  def open_menu
-    wait {@driver.find_element(:class, "trigger").click}
+  def return_h2_array
+    wait { @driver.find_elements(:css, '#about h2') }
   end
   def return_medlist_link
     return wait { @driver.find_element(:link, "Med List") }
@@ -19,10 +19,8 @@ class Menu
 
   def return_about_link
     return wait { @driver.find_element(:link, "About") }
+
   end
 
-  def return_subheader_text
-    return wait { @driver.find_element(:class, 'subheader').text }
-  end
 end
 

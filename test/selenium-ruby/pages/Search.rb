@@ -15,7 +15,6 @@ class Search
     input_field.send_keys query
     input_field.send_keys :enter
     sleep 5
-
   end
 
   def return_result_text
