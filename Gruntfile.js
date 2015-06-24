@@ -3,7 +3,6 @@ var LIVERELOAD_PORT = 9000;
 var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var pkg = require('./package.json');
-var creds = require('./creds.json');
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
