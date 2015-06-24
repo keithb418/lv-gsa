@@ -11,9 +11,13 @@ define(function (require) {
       "click button": "addItemToList"
     },
     "addItemToList": function(){
-       App.collections.medList.add(this.model);
-       App.vent.trigger('clear:search');
-       App.vent.trigger('show:hide:action');
+      if (App.collections.medList.length < 10) {
+        App.collections.medList.add(this.model);
+        App.collections.medList.sort();
+        App.vent.trigger('refresh:med:list');
+      }
+      App.vent.trigger('clear:search');
+      App.vent.trigger('show:hide:action');
     }
   });
 });
