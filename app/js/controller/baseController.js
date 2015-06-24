@@ -19,6 +19,13 @@ define(function (require) {
       App.collections.medList = new Drugs();
       App.headerRegion.show(App.views.header);
       App.footerRegion.show(App.views.footer);
+      
+      App.vent.on('sync:local:storage', function () {
+        localStorage.setItem('medList', JSON.stringify(App.collections.medList.toJSON()));
+      });
+      App.vent.on('sync:med:list', function () {
+        App.collections.medList.reset(JSON.parse(localStorage.getItem('medList')), {parse: true});
+      });
     },
     showGraph: function () {
       var GraphView = require('view/graph');
@@ -61,6 +68,7 @@ define(function (require) {
       App.views.mainLayout.mainContentRegion.show(new MedList({
           "collection": App.collections.medList
       }));
+      App.vent.trigger('sync:med:list');
     }
     
   });
