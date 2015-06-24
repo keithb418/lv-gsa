@@ -8,21 +8,19 @@ class Menu
   def open_menu
     wait {@driver.find_element(:class, "trigger").click}
   end
-  def return_github_link
-    return wait { @driver.find_element(:link, "GitHub") }
+  def return_medlist_link
+    return wait { @driver.find_element(:link, "Med List") }
+
+
   end
-  def return_twitter_link
-    return wait { @driver.find_element(:link, "Twitter") }
+  def return_graph_link
+    return wait { @driver.find_element(:link, "Graph") }
   end
 
-  def return_google_link
-    return wait { @driver.find_element(:link, "Google+") }
+  def return_about_link
+    return wait { @driver.find_element(:link, "About") }
+
   end
 
-# once the menu is done change the find element lines to:
-# expect(element_present?(:link, "Med List")).to be_truthy
-# expect(element_present?(:link, "Graph")).to be_truthy
-# expect(element_present?(:link, "About")).to be_truthy
-# and change the names to match
 end
 
