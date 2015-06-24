@@ -61,7 +61,9 @@ define(function (require) {
       window.location.hash = '#graph';
     },
     deleteItems: function () {
-      
+      App.collections.medList.remove(App.selectedMeds);
+      this.updateAction();
+      this.showHideActionBtn();
     },
     showHideActionBtn: function () {
       var action = 'add';
@@ -98,7 +100,7 @@ define(function (require) {
       });
     },
     updateAction: function () {
-      var numChecked = $('.med-list input[type="checkbox"]:checked').length;
+      var numChecked = App.selectedMeds.length;
       var icon = 'fa-bar-chart';
       var action = this.goToGraph;
       

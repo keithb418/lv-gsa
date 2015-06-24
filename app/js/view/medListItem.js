@@ -10,7 +10,18 @@ define(function (require) {
     events: {
       'change input': 'updateAction'
     },
-    updateAction: function () {
+    updateAction: function (e) {
+      var $target = this.$el.find(e.currentTarget);
+      var checked = $target.is(':checked');
+      var id = $target.attr('id');
+      
+      if (checked) {
+        App.selectedMeds.push(id);
+      } else {
+        var index = App.selectedMeds.indexOf(id);
+        App.selectedMeds.splice(index, 1);
+      }
+      
       App.vent.trigger('update:action');
     }
   });
