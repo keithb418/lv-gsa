@@ -12,10 +12,10 @@ $icon-font-path: "../lib/sass-bootstrap/fonts/";
 $header-height: 48px;
 $footer-height: 24px;
 
-$dark-green: #1976D2;
-$green: #2196f3;
-$light-green: #BBDEFB;
-$orange: #FFC107;
+$dark-primary: #388E3C;
+$primary: #4CAF50;
+$light-primary: #C8E6C9;
+$action: #2196f3;
 $dark-text: #212121;
 $grey-text: #727272;
 $divider: #b6b6b6;
@@ -41,7 +41,7 @@ footer {
     }
     #content {       
         opacity: 1;
-        background-color: $green;
+        background-color: $primary;
     	background: url('../assets/splash_bg.jpg') no-repeat center center fixed;
     	-webkit-background-size: cover;
       	-moz-background-size: cover;
@@ -130,7 +130,7 @@ footer {
                 width: 100%;
                 .btn.btn-primary {
                     font-size: 3em;
-                    background: $orange;
+                    background: $action;
                     border-radius: 10px;
                     -webkit-border-radius: 10px;
                     -moz-border-radius: 10px;
@@ -153,7 +153,7 @@ footer {
     }
     
     .med-list-item {
-        background-color: $grey-text;
+        background-color: #fff;
         border-bottom: 1px solid $divider;
         padding: 10px;
         width: inherit;
@@ -162,8 +162,17 @@ footer {
     button {
         background: transparent;
         border: 0 none;
+        color: $grey-text;
         font-size: 16px;
     }
+    
+    // input[type="checkbox"] + label {
+    //     background-color: #fff;
+    //     border: 2px solid #4CAF50;
+    //     border-radius: 4px;
+    //     height: 30px;
+    //     width: 30px;
+    // }
 }
 
 .container-full {
@@ -173,7 +182,7 @@ footer {
 }
 
 .header-fixed {
-    background-color: $green;
+    background-color: $primary;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -333,7 +342,7 @@ footer {
         }
         .menu__items li a {
           display: block;
-          background: $orange;
+          background: $action;
           border-radius: 50%;
           outline: none;
           overflow: hidden;
@@ -346,7 +355,7 @@ footer {
         }
         .menu__items li a:hover,
         .menu__items li a:focus {
-          background: $dark-green;
+          background: $dark-primary;
         }
         .menu__items li a i {
             color: #FFF;
@@ -366,18 +375,18 @@ footer {
           z-index: 100;
         }
         .morph-shape svg path {
-          fill: $dark-green;
+          fill: $dark-primary;
           -webkit-transition: fill 0.3s;
           transition: fill 0.3s;
         }
         .menu--open .morph-shape svg path {
-          fill: $orange;
+          fill: $action;
         }
     }
 }
 
 .subheader {
-    background-color: $green;
+    background-color: $primary;
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
@@ -425,7 +434,7 @@ footer {
     }
     
     .btn-primary {
-        background-color: $orange;
+        background-color: $action;
         border: 0 none;
         border-radius: 22px;
         bottom: -22px;
@@ -461,7 +470,7 @@ footer {
     left: 0px;
     right: 0px;
     height: $footer-height;
-    background-color: $dark-green;
+    background-color: $dark-primary;
     .version {
         margin-left: 5px;
         color: #FFF;
@@ -494,7 +503,7 @@ footer {
     }
     
     .search-results {
-        border: 2px solid $green;
+        border: 2px solid $primary;
         -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
         -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
@@ -538,7 +547,7 @@ footer {
             width: 100%; 
             
             &:hover, &:focus {
-                background-color: $light-green;
+                background-color: $light-primary;
             }
             
             span {
@@ -568,7 +577,7 @@ footer {
 }
 
 .main-content {
-    background-color: $light-green;
+    background-color: #fff;
     height: calc(100% - 44px);
     overflow-y: auto;
 }
