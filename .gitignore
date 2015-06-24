@@ -21,3 +21,4 @@ Gemfile.lock
 medchecker/www/*
 medchecker/platforms/ios/www/*
 dist.war
+creds.json

@@ -1,23 +1,23 @@
 language: node_js
-node_js: 
- - "0.12"
+node_js:
+- '0.12'
 before_install:
- - "export DISPLAY=:99.0"
- - "sh -e /etc/init.d/xvfb start"
-install: 
- - gem install bundler
- - bundle install
- - npm install
- - npm install -g bower
- - npm install -g grunt-cli
- - bower install
- - grunt devBuild
- - node server.js &
- - sleep 3
- - cd test/selenium-ruby
- - rspec
- - exit 0
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- gem install bundler
+- bundle install
+- npm install
+- npm install -g bower
+- npm install -g grunt-cli
+- bower install
+- grunt deploy:production
+- exit 0
 notifications:
- email:
-  on_success: never
-  on_failure: always
+  email:
+    on_success: never
+    on_failure: always
+env:
+  global:
+  - secure: swyGWII8sRCP4L8kI8t72Fw4teneHpvfwT8+acLli4HVByMhivAognDaTyrwiCbx1uLS4RN7Sjq9dyt5vJuxOjlBuzykQ83EvEd2pWYy5mywcedhrj6ICuakQ/WfdxM241Al3taSzQ9fZowA6Pru4X0/oRYYfvaedT3rnrAs55sZHPnlxuNsFaRro+7bxKHgfW3MuBs3GRaanaW8h2caRCmjTlPVZR5/8ABiwCBljBAPeuf+Fb4s6lSvyD1Ii9srbDP/AXrBJSjcs6h+AzblcNKUhvX0rispQUzsZsp9uBP0yW1yC+1bXK/S1va1P03XXnxG8jFtRXkNwE9lbTdmjEuaMIbFopkQypihkPUOaNUXKG2FWllcKzttldlLEa5NyucpFLE4LDB62IfXfnVI6MhCgc54x8qp7NISpOvCd8pShkNyob1W2VfyEe0fQyesFwC9eREmnrGHWV2wvLoMa+s4760rMyue49sjl1NnLUUT9ua9cWPfnLrbCccdD6++gArFzJxf1euW4wQl8ea3TFYDDNnk/Ag+3d7/tti8ME96jT2ZnNVgcHih6pfhReBdlj9Q4MlP1npQg5Rs5+FIwGiKj7QqVlccTDka6zZNyV1cXcoplpbhekgGduvxa9OXJg3G9Td4OtZiXeTTZN8FR5yJzhJbLS6CZbwGKaLAMPY=
+  - secure: ufxfRiAgt86Ovh1H8P/4tOiJGmvLfKzGHZfRXIXHwJd8lfF4o99UeO3sNxPiVep1rY2eNvTsiNBbB+TBBP8XBkQiIZ8cAAQmqxRI02b9430l+I5CaLJH7qGbLD9F7H9Ps51LPovDK8XotUmNCoBVT553sypRGQOIvAiTusd4aJxiYXxUwg9fyhj6cgr/BjNnuAL5wGgZoXAgjQT1F+oDE4AMeDXf1vA7U+BVc+tV6RUGcXu5lRjeJOaenYr29MKFwJujcSfklMGKqTKf6c43JsZ4wzHFeTDrNBm0jxhdCFbhixy6JDLcV9QugfeSyQTLcDwCqCbyvNLKrOh4rhhlmRf8pOgrREkRcFQEVNAF07xaUGxvHnhpNmLkylXIEIubR3zx6Ybl8sjSYmmdCKtcuVW5gaXFQgO6r5bgIs8rEepGduV+1bqlXimgYJ8bvGh/XyzkpGnCYnZ9pT6Z4CDMB8P87KIkfP3OeL40lg/W/0oBPhLKai6DuYtKHEYLicgTYN95WwAdXIL8l77VQ7lgOHinCV8qt3KbqAI+4g+wnGPSR4qbjxfJIa3iLTpk6SWkgr06wJ8KooUyMPDLxO7CR4SlihvRqVhhmLgJyFlx8qrzSQg8150bAwSBAugoBCqPNACM9N9EGtqKIxA7sWlAgaOw5EMhn3qXWIyp6vqJKYk=
