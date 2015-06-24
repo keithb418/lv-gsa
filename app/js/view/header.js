@@ -31,6 +31,7 @@ define(function (require) {
     initialize: function () {
       var that = this;
       App.vent.on("close:menu", function () {
+        that.ui.bindUIElements();
         that.closeMenu();
       });
     },
@@ -67,6 +68,7 @@ define(function (require) {
       });
     },
     closeMenu: function () {
+      this.ui.bindUIElements();
       this.ui.menu.removeClass('menu--open');
     },
     closeSearch: function () {
