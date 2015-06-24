@@ -29,27 +29,29 @@ define(function (require) {
       this.collection = new Drugs();
       
       App.vent.on('close:results', function () {
+        that.bindUIElements();
         that.closeResults();
       });
-      App.vent.on('clear:search', function () {
-        that.ui.medSearch.val('');
-      });
       App.vent.on('update:action', function () {
+        that.bindUIElements();
         that.updateAction();
       });
       App.vent.on('show:hide:action', function () {
+        that.bindUIElements();
         that.showHideActionBtn();
+      });
+      App.vent.on('update:search', function () {
+        that.bindUIElements();
+        that.updateSearch();
       });
     },
     onShow: function () {
-      var that = this;
       App.views.mainLayout.$el.addClass('med-search-layout');
-      
-      this.setupCall = $.ajax({
-        url: '../MedCheckerResources/drugs/setup'
-      });
-      
-      that.showHideActionBtn();
+      this.showHideActionBtn();
+      this.updateSearch();
+    },
+    onRender: function () {
+      this.bindUIElements();
     },
     onClose: function () {
       App.views.mainLayout.$el.removeClass('med-search-layout');
@@ -63,8 +65,10 @@ define(function (require) {
     deleteItems: function () {
       App.collections.medList.remove(App.selectedMeds);
       App.selectedMeds = [];
+      App.vent.trigger('sync:local:storage');
       this.updateAction();
       this.showHideActionBtn();
+      this.updateSearch();
     },
     showHideActionBtn: function () {
       var action = 'add';
@@ -86,18 +90,20 @@ define(function (require) {
       var that = this;
       var criteria = this.ui.medSearch.val();
       
-      this.setupCall.done(function () {
-        if (e.which === 13 && criteria.length) {
-          that.collection.fetch({
-            url: '../MedCheckerResources/drugs/search/' + criteria,
-            success: function () {
-              that.ui.searchResults.addClass('open');
-            }
-          });
-        } else {
-          that.closeResults();
-        }
-      });
+      if (e.which === 13 && criteria.length) {
+        this.collection.fetch({
+          url: '../MedCheckerResources/drugs/search/' + criteria,
+          success: function () {
+            that.ui.searchResults.addClass('open');
+          },
+          error: function () {
+            that.collection.reset();
+            that.ui.searchResults.addClass('open');
+          }
+        });
+      } else {
+        this.closeResults();
+      }
     },
     updateAction: function () {
       var numChecked = App.selectedMeds.length;
@@ -113,6 +119,19 @@ define(function (require) {
       this.ui.actionBtnIcon.addClass(icon);
       this.action = action;
     },
-    
+    updateSearch: function () {
+      var numMeds = App.collections.medList.length;
+      var disabled = false;
+      var placeholder = 'Search for a medicine...';
+      
+      if (numMeds >= 10) {
+        disabled = true;
+        placeholder = 'Max number of meds reached';
+      }
+      
+      this.ui.medSearch.val('');
+      this.ui.medSearch.attr('placeholder', placeholder);
+      this.ui.medSearch[0].disabled = disabled;
+    }
   });
 });

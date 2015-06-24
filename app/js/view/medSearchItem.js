@@ -14,8 +14,9 @@ define(function (require) {
       if (App.collections.medList.length < 10) {
         App.collections.medList.unshift(this.model);
         App.vent.trigger('refresh:med:list');
+        App.vent.trigger('sync:local:storage');
       }
-      App.vent.trigger('clear:search');
+      App.vent.trigger('update:search');
       App.vent.trigger('show:hide:action');
     }
   });

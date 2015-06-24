@@ -13,6 +13,14 @@ define(function (require) {
       App.vent.on('refresh:med:list', function () {
         that.render();
       });
+    },
+    collectionEvents: {
+      'sync': 'updateSearchAndAction',
+      'reset': 'updateSearchAndAction'
+    },
+    updateSearchAndAction: function () {
+      App.vent.trigger('show:hide:action');
+      App.vent.trigger('update:search');
     }
   });
 });
