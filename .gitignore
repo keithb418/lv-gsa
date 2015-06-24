@@ -13,7 +13,7 @@ test/temp
 app/lib
 .tmp
 test/lib/
-test/unit_tests/runner/*
+test/unit_tests/runner/SpecRunner.html
 .settings/*
 *.iml
 atlassian-ide-plugin.xml
