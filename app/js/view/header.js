@@ -31,7 +31,7 @@ define(function (require) {
     initialize: function () {
       var that = this;
       App.vent.on("close:menu", function () {
-        that.ui.bindUIElements();
+        that.bindUIElements();
         that.closeMenu();
       });
     },
@@ -40,12 +40,13 @@ define(function (require) {
       this.trigger = this.el.querySelector('button.trigger');
       this.shapeEl = this.el.querySelector('span.morph-shape');
   
-      var s = snap(this.shapeEl.querySelector('svg'));
-      this.pathEl = s.select('path');
+      var shape = snap(this.shapeEl.querySelector('svg'));
+      this.pathEl = shape.select('path');
       this.paths = {
         reset: this.pathEl.attr('d'),
         active: this.shapeEl.getAttribute('data-morph-active')
       };
+      this.bindUIElements();
     },
     
     handleToggleMenu: function () {
@@ -68,7 +69,6 @@ define(function (require) {
       });
     },
     closeMenu: function () {
-      this.ui.bindUIElements();
       this.ui.menu.removeClass('menu--open');
     },
     closeSearch: function () {

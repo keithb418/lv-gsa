@@ -9,14 +9,19 @@ define(function (require) {
 	
 	describe('Header view', function () {
 		
+		beforeEach(function () {
+			header.render();
+		});
 		afterEach(function () {
 			header.close();
 		});
 		
-		header.render();
-		
 		it('Shows the menu being closed and opened', function () {
 			expect(header.ui.menu.hasClass('menu--open')).toBe(false);
+			
+			spyOn(window, 'setTimeout').and.callFake(function (callback) {
+				callback();
+			});
 			
 			header.handleToggleMenu();
 			
@@ -24,6 +29,10 @@ define(function (require) {
 		});
 		
 		it('Will close the menu when it loses focus', function () {
+			spyOn(window, 'setTimeout').and.callFake(function (callback) {
+				callback();
+			});
+			
 			header.handleToggleMenu();
 			
 			expect(header.ui.menu.hasClass('menu--open')).toBe(true);
