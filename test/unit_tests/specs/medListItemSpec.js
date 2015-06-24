@@ -7,7 +7,9 @@ define(function (require) {
 	var MedListItem = require('view/medListItem');
 	var medListItem = new MedListItem({
 		model: new Backbone.Model({
-			
+			id: "12345",
+			brandName: "Sudafed",
+			manufacturerName: "Advil"
 		})
 	});
 	
@@ -15,8 +17,27 @@ define(function (require) {
 		
 		medListItem.render();
 		
-		it('should be truty', function () {
-			expect(true).toBe(true);
+		it('Should be checked, then added to the list', function () {
+			medListItem.$el.find('input').attr("checked", "checked");
+			
+			spyOn(App.vent, 'trigger').and.callThrough();
+			medListItem.updateAction({
+				currentTarget: medListItem.$el.find('input')
+			});
+			
+			expect(App.vent.trigger).toHaveBeenCalledWith('update:action');
+			expect(App.selectedMeds.indexOf("12345")).not.toEqual(-1);
+		});
+		it('Should be unchecked, then removed from the list', function () {
+			medListItem.$el.find('input').removeAttr("checked");
+			
+			spyOn(App.vent, 'trigger').and.callThrough();
+			medListItem.updateAction({
+				currentTarget: medListItem.$el.find('input')
+			});
+			
+			expect(App.vent.trigger).toHaveBeenCalledWith('update:action');
+			expect(App.selectedMeds.indexOf("12345")).toEqual(-1);
 		});
 	});
 });
