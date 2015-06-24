@@ -288,8 +288,8 @@ module.exports = function (grunt) {
     },
     tomcat_deploy: {
       host: 'localhost',
-      login: 'admin',
-      password: 'Agilexadmin99$',
+      login: 'manager',
+      password: 'localMagicPass',
       path: '/' + pkg['artifact-name'],
       port: 8080,
       dist: 'dist',
@@ -354,6 +354,8 @@ module.exports = function (grunt) {
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
     else if (arg==='production') {
+      //right now the login is admin on prod, but manager on local envs
+      grunt.config('tomcat_deploy.login','admin')
       grunt.config('tomcat_deploy.host', process.env.PROD_TC_HOST);
       grunt.config('tomcat_deploy.password', process.env.PROD_TC_PWD);
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
