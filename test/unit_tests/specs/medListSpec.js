@@ -23,7 +23,7 @@ define(function (require) {
 			
 			App.vent.trigger('refresh:med:list');
 			
-			expect(medList.render).toHaveBeenCalledWith('refresh:med:list');
+			expect(medList.render).toHaveBeenCalled();
 		});
 	});
 });
