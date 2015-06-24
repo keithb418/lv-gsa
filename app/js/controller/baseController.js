@@ -71,7 +71,8 @@ define(function (require) {
       App.views.mainLayout.subheaderRegion.show(new MedSearch());
       App.views.mainLayout.mainContentRegion.show(new MedList({
           "collection": App.collections.medList
-      }));
+        })
+      );
       App.vent.trigger('sync:med:list');
     }
     
