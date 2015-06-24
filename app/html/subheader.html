@@ -1,5 +1,7 @@
 <h2><%- title %></h2>
-<button id="action-btn" class="btn btn-primary">
-	<span class="btn-icon icon-fill fa <%- button.icon %>"></span>
-	<span class="sr-only"><%- button.title %></span>
-</button>
+<% if (typeof button != 'undefined') { %>
+	<button id="action-btn" class="btn btn-primary">
+		<span class="btn-icon icon-fill fa <%- button.icon %>"></span>
+		<span class="sr-only"><%- button.title %></span>
+	</button>
+<% } %>

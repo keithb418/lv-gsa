@@ -35,7 +35,11 @@ define(function (require) {
       App.views.mainLayout.mainContentRegion.show(new GraphView());
     },
     showAbout: function () {
-      App.contentRegion.show(new AboutView());
+      this.showMainLayout();
+      this.showSubheader({
+        title: 'About'
+      });
+      App.views.mainLayout.mainContentRegion.show(new AboutView());
     },
     showWelcome: function () {
       Backbone.history.navigate('/');
