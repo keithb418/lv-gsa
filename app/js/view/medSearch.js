@@ -62,6 +62,7 @@ define(function (require) {
     },
     deleteItems: function () {
       App.collections.medList.remove(App.selectedMeds);
+      App.selectedMeds = [];
       this.updateAction();
       this.showHideActionBtn();
     },
