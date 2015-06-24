@@ -3,6 +3,7 @@ var LIVERELOAD_PORT = 9000;
 var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var pkg = require('./package.json');
+var creds = require('./creds.json');
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -335,7 +336,6 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-
   grunt.registerTask('devBuild', [
     'clean:dist',
     'compass:dev',
@@ -355,7 +355,14 @@ module.exports = function (grunt) {
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
     else if (arg==='production') {
-      //grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+      grunt.config('tomcat_deploy.host', process.env.AZURE_TC_HOST);
+      grunt.config('tomcat_deploy.password', process.env.AZURE_TC_PWD);
+      grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
+    }
+    else if (arg==='docker') {
+      grunt.config('tomcat_deploy.host', process.env.DOCKER_TC_HOST);
+      grunt.config('tomcat_deploy.password', process.env.DOCKER_TC_PWD);
+      grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
   });
 };
