@@ -12,7 +12,7 @@ describe 'Welcome page' do
   end
 
   it 'will have a link to proceed to app' do
-    expect(@welcome.return_proceed_button.text).to eq "Continue as Guest"
+    expect(@welcome.return_proceed_button.text).to eq "Get Started!"
   end
   # and verify clicking link takes to you to the main page of the app
   it 'will take you to the main app when you click proceed to app' do
