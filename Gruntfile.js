@@ -305,7 +305,9 @@ module.exports = function (grunt) {
         },
         files: [
           {
-            cwd: 'dist/', expand: true, src: ['**/*', '!**/*.tgz']
+            cwd: 'dist/', 
+            expand: true, 
+            src: ['**/*', '!**/*.tgz']
           }
         ]
       }
@@ -355,7 +357,7 @@ module.exports = function (grunt) {
     }
     else if (arg==='production') {
       //right now the login is admin on prod, but manager on local envs
-      grunt.config('tomcat_deploy.login','admin')
+      grunt.config('tomcat_deploy.login','admin');
       grunt.config('tomcat_deploy.host', process.env.PROD_TC_HOST);
       grunt.config('tomcat_deploy.password', process.env.PROD_TC_PWD);
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
