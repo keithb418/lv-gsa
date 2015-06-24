@@ -101,7 +101,7 @@ define(function (require) {
             that.ui.searchResults.addClass('open');
           }
         });
-      } else {
+      } else if (e.which !== 9 || (e.which === 9 && e.shiftKey)) {
         this.closeResults();
       }
     },

@@ -13,6 +13,8 @@ class Search
     input_field = self.return_search_field
     input_field.clear
     input_field.send_keys query
+    input_field.send_keys :enter
+    sleep 5
 
   end
 

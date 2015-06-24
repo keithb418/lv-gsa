@@ -28,8 +28,8 @@ describe 'Search page' do
 
   end
 
-  it 'will return no results if input is zzz' do
-    @search.enter_search_term('zzz')
+  it 'will return no results if input is nomedname' do
+    @search.enter_search_term('nomedname')
     sleep 5
     expect(@search.return_result_text).to match "No results to display"
   end
