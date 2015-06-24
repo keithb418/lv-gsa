@@ -18,7 +18,7 @@ define(function (require) {
 		medListItem.render();
 		
 		it('Should be checked, then added to the list', function () {
-			$('input').prop("checked", true);
+			medListItem.$el.find('input').attr("checked", "checked");
 			
 			spyOn(App.vent, 'trigger').and.callThrough();
 			medListItem.updateAction({
@@ -29,15 +29,15 @@ define(function (require) {
 			expect(App.selectedMeds.indexOf("12345")).not.toEqual(-1);
 		});
 		it('Should be unchecked, then removed from the list', function () {
-			$('input').prop("checked", false);
+			medListItem.$el.find('input').removeAttr("checked");
 			
 			spyOn(App.vent, 'trigger').and.callThrough();
 			medListItem.updateAction({
-				currentTarget: $('input')
+				currentTarget: medListItem.$el.find('input')
 			});
 			
 			expect(App.vent.trigger).toHaveBeenCalledWith('update:action');
-			expect(App.selectedMeds.indexOf(0)).toEqual(-1);
+			expect(App.selectedMeds.indexOf("12345")).toEqual(-1);
 		});
 	});
 });
