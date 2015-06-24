@@ -6,19 +6,6 @@ define(function (require) {
   return Backbone.Marionette.ItemView.extend({
     id: 'about',
     tagName: 'div',
-    className: '',
-    template: _.template(template),
-
-    serializeData: function () {
-      return {
-        appName: App.name,
-        version: App.version
-      };
-    },
-
-    events: {
-
-    }
-
+    template: _.template(template)
   });
 });
