@@ -4,17 +4,41 @@
 	var id = "";
 	var c1=[-100, 40], c3=[-10, 140]; //Column positions of labels.
 	var colors =["#3366CC", "#DC3912",  "#FF9900","#109618", "#990099", "#0099C6"];
+	var ids = [];
 	
 	bP.partData = function(data,p){
 		var sData={};
 		
+		var leftColData = data.map(function(d){ return d[0]; });
+		
+		leftColData.sort(function (a, b) {
+			var value = 0;
+			
+			if (a.name < b.name) {
+				value = -1;
+			} else if (a.name > b.name) {
+				value = 1;
+			}
+			
+			return value;
+		});
+		
+		for (var i = 0; i < data.length; i++) {
+			data[i][0] = data[i][0].name;
+		};
+		
 		sData.keys=[
-			d3.set(data.map(function(d){ return d[0];})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);}),
+			d3.set(leftColData.map(function(d){ return d.name ;})).values(),
 			d3.set(data.map(function(d){ return d[1];})).values().sort(function(a,b){ return ( a<b? -1 : a>b ? 1 : 0);})		
 		];
 		
-		sData.data = [	sData.keys[0].map( function(d){ return sData.keys[1].map( function(v){ return 0; }); }),
-						sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); }) 
+		ids=[
+			d3.set(leftColData.map(function (d) { return d.id; })).values()
+		];
+		
+		sData.data = [	
+			sData.keys[0].map( function(d){ return sData.keys[1].map( function(v){ return 0; }); }),
+			sData.keys[1].map( function(d){ return sData.keys[0].map( function(v){ return 0; }); }) 
 		];
 		
 		data.forEach(function(d){ 
@@ -111,6 +135,10 @@
 		var mainbar = d3.select("#"+id).select(".part"+p).select(".mainbars")
 			.selectAll(".mainbar").data(data.mainBars[p])
 			.enter().append("g").attr("class","mainbar");
+			
+		if (!p) {
+			mainbar.attr("id", function(d,i){ return ids[p][i]; });
+		}
 
 		mainbar.append("rect").attr("class","mainrect")
 			.attr("x", 0).attr("y",function(d){ return d.middle-d.height/2; })
@@ -123,7 +151,7 @@
 			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return data.keys[p][i];})
 			.attr("text-anchor","start" )
-			.style('font-size', '15');
+			.style('font-size', '14');
 			
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()

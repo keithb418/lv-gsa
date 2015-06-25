@@ -25,6 +25,7 @@ describe 'Label page' do
   # clean and esily read - can not be automated
 
   # NOTES: no ac for having graph or meds button on the med list or graph page
-  # also
+  # will this be accessible from the med list page - we talked about having the med name be clickable
+
 end
 

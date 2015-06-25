@@ -1,1 +1,1 @@
-$app_url = "http://localhost:8080/med-checker"
+$app_url = "http://ec2-54-243-195-170.compute-1.amazonaws.com:8080/med-checker/"

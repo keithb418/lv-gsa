@@ -14,8 +14,7 @@ RSpec.configure do |config|
     @accept_next_alert = true
     @driver.manage.timeouts.implicit_wait = 3
 
-    
-    @driver.get($app_url)
+    @driver.get('http://ec2-54-243-195-170.compute-1.amazonaws.com:8080/med-checker/')
   end
 
   config.after(:all) do

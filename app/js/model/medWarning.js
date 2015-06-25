@@ -7,6 +7,18 @@ define(function (require) {
       id: '',
       brandName: '',
       warnings: []
+    },
+    parse: function (response) {
+      response.warnings = this.parseWarningText(response.warnings);
+      
+      return response;
+    },
+    parseWarningText: function (warnings) {
+      for (var i = 0; i < warnings.length; i++) {
+        warnings[i] = warnings[i].replace(' warning', '');
+      }
+      
+      return warnings;
     }
 
   });
