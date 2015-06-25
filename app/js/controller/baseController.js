@@ -65,7 +65,7 @@ define(function (require) {
                 window.location.hash = '#' + previousView;
               }
             }
-         	});
+          });
         }
       });
       
