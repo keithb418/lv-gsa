@@ -318,12 +318,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('default', [
-    'jshint',
-    'shell:selenium',
-    'build'
+    'devBuild'
   ]);
 
   grunt.registerTask('build', [
+    'jshint',
     'clean:dist',
     'compass:dist',
     'useminPrepare',
@@ -360,9 +359,11 @@ module.exports = function (grunt) {
       grunt.config('tomcat_deploy.login','admin');
       grunt.config('tomcat_deploy.host', process.env.PROD_TC_HOST);
       grunt.config('tomcat_deploy.password', process.env.PROD_TC_PWD);
+      //grunt.task.run(['build', 'test','compress:war','tomcat_redeploy']);
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
     else if (arg==='docker') {
+      grunt.config('tomcat_deploy.login','admin');
       grunt.config('tomcat_deploy.host', process.env.DOCKER_TC_HOST);
       grunt.config('tomcat_deploy.password', process.env.DOCKER_TC_PWD);
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
