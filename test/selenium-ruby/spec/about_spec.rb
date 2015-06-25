@@ -19,9 +19,9 @@ describe 'About page' do
     expect(@menu.return_subheader_text).to match 'About'
   end
 
-  it 'will contain the statement of purpose' do
+  it 'will contain the mission statement' do
     # put disclaimer check here
-    expect(@about.return_h2_array[0].text).to eq "Statement of Purpose"
+    expect(@about.return_h2_array[0].text).to eq "Mission Statement"
   end
 
   it 'will contain the disclaimer' do
@@ -31,8 +31,5 @@ describe 'About page' do
   it 'will contain copyright text' do
     expect(@about.return_h2_array[2].text).to eq "Copyright Waiver"
   end
-
-  # will this be accessible from the med list page - we talked about having the med name be clickable
-
 end
 
