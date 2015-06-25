@@ -21,7 +21,7 @@ describe 'Menu' do
   it 'clicking graph link will take you to the correct page' do
     @menu.open_menu
     @menu.return_graph_link.click
-    expect(@menu.return_subheader_text).to match 'Medication Warnings Graph'
+    expect(@menu.return_subheader_text).to match 'Medication Warnings Chart'
   end
 
   it 'clicking about will take you to the correct page' do
