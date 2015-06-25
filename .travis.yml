@@ -15,8 +15,7 @@ install:
 - npm install -g grunt-cli
 - bower install
 - grunt deploy:production
-- echo \$app_url = \"http:\/\/$PROD_TC_URL:8080\/med-checker\" > test/selenium-ruby/spec/_config.rb
-- sleep 10
+- sleep 3
 - rspec test/selenium-ruby/spec/about_spec.rb
 - exit 0
 notifications:
