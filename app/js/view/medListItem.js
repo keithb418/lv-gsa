@@ -8,7 +8,8 @@ define(function (require) {
     className: 'med-list-item',
     template: _.template(template),
     events: {
-      'change input': 'updateAction'
+      'change input': 'updateAction',
+      'click button': 'viewMedLabel'
     },
     updateAction: function (e) {
       var $target = this.$el.find(e.currentTarget);
@@ -23,6 +24,9 @@ define(function (require) {
       }
       
       App.vent.trigger('update:action');
+    },
+    viewMedLabel: function () {
+      App.vent.trigger('show:medLabel', this.model);
     }
   });
 });

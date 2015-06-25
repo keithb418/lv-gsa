@@ -10,6 +10,8 @@ define(function (require) {
   
   return Backbone.Marionette.Controller.extend({
     initialize: function () {
+      var that = this;
+      
       App.views = {};
       App.collections = {};
       App.selectedMeds = [];
@@ -26,6 +28,30 @@ define(function (require) {
       App.vent.on('sync:med:list', function () {
         App.collections.medList.reset(JSON.parse(localStorage.getItem('medList')), {parse: true});
       });
+      App.vent.on('show:medLabel', function (model) {
+        that.showMedLabel(model);
+      });
+    },
+    showMedLabel: function (model) {
+      var that = this,
+          MedLabelView = require('view/medLabel'),
+          MedLabelModel = require('model/medLabel'),
+          medLabelModel = new MedLabelModel(),
+          medLabelView = new MedLabelView({model: medLabelModel});
+          
+          
+      this.showMainLayout();    
+      App.views.mainLayout.mainContentRegion.show(medLabelView);
+      medLabelModel.fetch({
+        url: '../MedCheckerResources/drugs/label/' + model.id,
+        success: function (response) {
+          medLabelView.render();
+          that.showSubheader({
+            title: response.get('openfda').brand_name
+         	});
+        }
+      });
+      
     },
     showGraph: function () {
       var GraphView = require('view/graph');
