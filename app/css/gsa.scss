@@ -531,7 +531,11 @@ footer {
     h2 {
         font-size: 20px;
         margin: 0;
+        overflow: hidden;
         padding: 0;
+        text-overflow: ellipsis;
+        width: 90%;
+        white-space: nowrap;
     }
     
     .btn-primary {

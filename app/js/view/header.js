@@ -21,7 +21,8 @@ define(function (require) {
     events: {
       'click .trigger': 'handleToggleMenu',
       'click :not(.menu)': 'closeMenu',
-      'click *': 'closeSearch'
+      'click *': 'closeSearch',
+      'click .menu__items a': 'resetBackboneHistory'
     },
     
     ui: {
@@ -47,6 +48,11 @@ define(function (require) {
         active: this.shapeEl.getAttribute('data-morph-active')
       };
       this.bindUIElements();
+    },
+    
+    resetBackboneHistory: function () {
+      Backbone.history.stop();
+      Backbone.history.start();
     },
     
     handleToggleMenu: function () {
