@@ -1,10 +1,24 @@
-<h3>Adverse Reactions</h3>
-<p><%- adverse_reactions%></p>
-<h3>Description</h3>
-<p><%- description %></p>
-<h3>Warnings</h3>
-<p><%- warnings %></p>
-<h3>Generic Name</h3>
-<p><%- generic_name %></p>
-<h3>Manufacturer Name</h3>
-<p><%- manufacturer_name %></p>
+<% if (openfda.brand_name) { %>
+	<h3>Brand Name</h3>
+	<%- openfda.brand_name %>
+<% } %>
+<% if (adverse_reactions) { %>
+	<h3>Adverse Reactions</h3>
+	<p><%- adverse_reactions %></p>
+<% } %>
+<% if (description) { %>
+	<h3>Description</h3>
+	<p><%- description %></p>
+<% } %>
+<% if (warnings) { %>
+	<h3>Warnings</h3>
+	<p><%- warnings %></p>
+<% } %>
+<% if (openfda.generic_name) { %>
+	<h3>Generic Name</h3>
+	<p><%- openfda.generic_name %></p>
+<% } %>
+<% if (openfda.manufacturer_name) { %>
+	<h3>Manufacturer Name</h3>
+	<p><%- openfda.manufacturer_name %></p>
+<% } %>
