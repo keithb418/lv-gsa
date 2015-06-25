@@ -43,7 +43,7 @@ define(function (require) {
           
       if (window.location.hash === '') {
         previousIconClasses = 'fa-th-list';
-      } else if (window.location.hash === 'graph') {
+      } else if (window.location.hash === '#graph') {
         previousIconClasses = 'fa-bar-chart';
         previousView = 'graph';
       }
