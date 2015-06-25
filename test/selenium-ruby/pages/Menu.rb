@@ -24,5 +24,10 @@ class Menu
   def return_subheader_text
     return wait { @driver.find_element(:class, 'subheader').text }
   end
+
+  def click_action_button
+    @driver.find_element(:id, 'action-btn').click
+  end
+
 end
 
