@@ -13,6 +13,7 @@ install:
 - bower install
 - grunt deploy:production
 - echo \$app_url = \"http:\/\/$PROD_TC_URL:8080\/med-checker\" > test/selenium-ruby/spec/_config.rb
+- sleep 10
 - grunt selenium
 - exit 0
 notifications:

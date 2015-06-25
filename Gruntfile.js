@@ -365,7 +365,7 @@ module.exports = function (grunt) {
     else if (arg==='docker') {
       grunt.config('tomcat_deploy.login','admin');
       grunt.config('tomcat_deploy.host', process.env.DOCKER_TC_HOST);
-      grunt.config('tomcat_deploy.password', process.env.DOCKER_TC_PWD);
+      grunt.config('tomcat_deploy.password', 'dockerTom');
       grunt.task.run(['devBuild','compress:war','tomcat_redeploy']);
     }
   });
