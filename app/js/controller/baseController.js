@@ -37,8 +37,16 @@ define(function (require) {
           MedLabelView = require('view/medLabel'),
           MedLabelModel = require('model/medLabel'),
           medLabelModel = new MedLabelModel(),
-          medLabelView = new MedLabelView({model: medLabelModel});
+          medLabelView = new MedLabelView({model: medLabelModel}),
+          previousIconClasses = '',
+          previousView = '';
           
+      if (window.location.hash === '') {
+        previousIconClasses = 'fa-th-list';
+      } else if (window.location.hash === 'graph') {
+        previousIconClasses = 'fa-bar-chart';
+        previousView = 'graph';
+      }
           
       this.showMainLayout();    
       App.views.mainLayout.mainContentRegion.show(medLabelView);
@@ -47,7 +55,16 @@ define(function (require) {
         success: function (response) {
           medLabelView.render();
           that.showSubheader({
-            title: response.get('openfda').brand_name
+            title: response.get('openfda').brand_name,
+            button: {
+              title: 'Show Medicine List',
+              icon: previousIconClasses,
+              action: function () {
+                Backbone.history.stop();
+                Backbone.history.start();
+                window.location.hash = '#' + previousView;
+              }
+            }
          	});
         }
       });

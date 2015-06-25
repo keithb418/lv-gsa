@@ -9,9 +9,6 @@ define(function (require) {
     
     events: {
       
-    },
-    onRender: function () {
-      debugger;
     }
   });
 });
