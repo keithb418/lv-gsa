@@ -14,7 +14,6 @@ describe 'About page' do
 
 
   it 'will be reachable to from the menu' do
-    puts @driver.find_element(:tag_name,'html').attribute('innerHTML')
     @menu.open_menu
     @menu.return_about_link.click
     expect(@menu.return_subheader_text).to match 'About'

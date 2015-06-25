@@ -16,6 +16,7 @@ RSpec.configure do |config|
 
     
     @driver.get($app_url)
+    puts $app_url
   end
 
   config.after(:all) do
