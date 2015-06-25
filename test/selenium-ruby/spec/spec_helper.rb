@@ -4,6 +4,7 @@ require 'selenium-webdriver'
 require 'rspec'
 require 'rspec/expectations'
 require 'selenium-webdriver'
+require_relative "_config"
 # require 'rspec_junit_formatter'
 # require 'appium_lib'
 
@@ -13,8 +14,8 @@ RSpec.configure do |config|
     @accept_next_alert = true
     @driver.manage.timeouts.implicit_wait = 3
 
-    @app_url = "localhost:8080/med-checker"
-    @driver.get(@app_url)
+    
+    @driver.get($app_url)
   end
 
   config.after(:all) do
