@@ -262,7 +262,7 @@
 						} 
 						
 						return bP.selectSegment(data, p, i); 
-					});	
+					});
 			});
 		});	
 		

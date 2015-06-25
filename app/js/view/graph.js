@@ -1,54 +1,50 @@
 define(function (require) {
   'use strict';
   var App = require('app');
-  var template = require('text!../../html/graph.html');
   var bP = require('bP');
   var d3 = require('d3');
+  var MedWarnings = require('collection/medWarnings');
+  var template = require('text!../../html/graph.html');
+  var emptyTemplate = require('text!../../html/empty-graph.html');
 
   return Backbone.Marionette.ItemView.extend({
     id: 'graph',
     className: 'graph fill-height',
-    template: _.template(template),
+    getTemplate: function () {
+      if (App.collections.medList.length) {
+        return _.template(template);
+      }
+      
+      return _.template(emptyTemplate);
+    },
     initialize: function () {
-      this.collection = new Backbone.Collection([
-        {
-          id: '1',
-          name: 'Ibuprofen',
-          warnings: [
-            'Liver Warning',
-            'Stomach',
-            'Bleeding'
-          ]
-        },
-        {
-          id: '2',
-          name: 'Tylenol',
-          warnings: [
-            'Liver Warning',
-            'Drowsiness',
-          ]
-        },
-        {
-          id: '3',
-          name: 'Amoxicillin',
-          warnings: [
-            'Bleeding',
-            'Stomach',
-            'Seizure'
-          ]
-        }
-      ]);
+      this.collection = new MedWarnings();
     },
     onShow: function() {
-      this.drawSVG();
+      var that = this;
+      
+      if (App.collections.medList.length) {
+        $.ajax({
+          url: '../MedCheckerResources/drugs/graph',
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          data: JSON.stringify(this.getMedListIds()),
+          success: function (response) {
+            that.collection.reset(response, {parse: true});
+            that.drawSVG();
+          }
+        });
+      }
     },
     drawSVG: function () {
       var dataSet = this.getDataSet();
       
       var translate = {x: 150, y: 25};
 
-      var svg = d3.select('#'+this.id)
-        .append('svg')
+      var svg = d3.select('#' + this.id + ' svg')
         .append('g').attr('transform','translate(' + translate.x + ', ' + translate.y + ')');
 
       var data = [ 
@@ -66,6 +62,10 @@ define(function (require) {
       }, this));
       
       $window.resize();
+      
+      var e = document.createEvent('UIEvents');
+      e.initUIEvent('click', true, true, window, 1);
+      d3.select('#' + this.id + ' .mainbar').node().dispatchEvent(e);
     },
     getDataSet: function () {
       var medData = this.collection.toJSON();
@@ -73,11 +73,21 @@ define(function (require) {
       
       _.each(medData, function(drug) {
         _.each(drug.warnings, function (warning) {
-          dataSet.push([drug.name, warning, 1]);
+          dataSet.push([drug.brandName, warning, 1]);
         });
       });
       
       return dataSet;
+    },
+    getMedListIds: function () {
+      var medList = App.collections.medList.toJSON();
+      var ids = [];
+      
+      _.each(medList, function (med) {
+        ids.push(med.id);
+      });
+      
+      return ids;
     },
     getGraphHeight: function () {
       var numMeds = this.collection.length;
@@ -87,6 +97,5 @@ define(function (require) {
       
       return height;
     }
-
   });
 });

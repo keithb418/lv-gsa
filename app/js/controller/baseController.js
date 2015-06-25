@@ -31,7 +31,7 @@ define(function (require) {
       var GraphView = require('view/graph');
       this.showMainLayout();
       this.showSubheader({
-        title: 'Medication Warnings Graph',
+        title: 'Medication Warnings Chart',
         button: {
           title: 'Show Medicine List',
           icon: 'fa-th-list',

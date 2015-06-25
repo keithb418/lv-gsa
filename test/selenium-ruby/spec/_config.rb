@@ -1,0 +1,1 @@
+$app_url = "http://ec2-54-243-195-170.compute-1.amazonaws.com:8080/med-checker/"
