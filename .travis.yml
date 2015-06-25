@@ -16,7 +16,8 @@ install:
 - bower install
 - grunt deploy:production
 - sleep 3
-- rspec test/selenium-ruby/spec/about_spec.rb
+- cd test/selenium-ruby
+- rspec spec/about_spec.rb
 - exit 0
 notifications:
   email:
