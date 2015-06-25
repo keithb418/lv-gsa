@@ -92,7 +92,7 @@ define(function (require) {
       var dataSet = [];
       
       _.each(medData, function(drug) {
-        var brandName = drug.brandName.substr(0, 10) + '...';
+        var brandName = drug.brandName.length > 10 ? drug.brandName.substr(0, 10) + '...' : drug.brandName;
         _.each(drug.warnings, function (warning) {
           dataSet.push([{name: brandName, id: drug.id}, warning, 1]);
         });
@@ -120,7 +120,6 @@ define(function (require) {
     },
     showFullDrugName: function (e) {
       var $target = $(e.currentTarget);
-      var active = $target.hasClass('active');
       var id = e.currentTarget.id;
       var brandName = App.collections.medList.get(id).get('brandName');
       var that = this;
