@@ -241,6 +241,7 @@
 	}
 	
 	function hasValue(array, value) {
+		array = array || [];
 		var has = false;
 		
 		for (var i = 0; i < array.length; i++) {

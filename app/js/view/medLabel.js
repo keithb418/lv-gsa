@@ -5,10 +5,6 @@ define(function (require) {
 
   return Backbone.Marionette.ItemView.extend({
     id: "med-label",
-    template: _.template(template),
-    
-    events: {
-      
-    }
+    template: _.template(template)
   });
 });
