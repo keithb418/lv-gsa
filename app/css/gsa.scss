@@ -337,15 +337,15 @@ footer {
         }
         .trigger {
           background: none;
-          width: 45px;
+          border: none;
+          color: #fff;
           height: 45px;
           padding: 0;
+          position: relative;
           margin: 0;
-          border: none;
           outline: none;
           text-align: center;
-          color: #fff;
-          position: relative;
+          width: 45px;
           z-index: 1000;
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
           -webkit-tap-highlight-color: transparent;
