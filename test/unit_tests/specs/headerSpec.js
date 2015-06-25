@@ -42,5 +42,14 @@ define(function (require) {
 			expect(header.ui.menu.hasClass('menu--open')).toBe(false);
 			
 		});
+		it('Will reset the backbone history when each menu button is clicked', function () {
+			spyOn(Backbone.history, "stop");
+			spyOn(Backbone.history, "start");
+			
+			header.resetBackboneHistory();
+			
+			expect(Backbone.history.stop).toHaveBeenCalled();
+			expect(Backbone.history.start).toHaveBeenCalled();
+		});
 	});
 });
