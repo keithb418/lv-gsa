@@ -6,6 +6,7 @@ define(function (require) {
   var MedWarnings = require('collection/medWarnings');
   var template = require('text!../../html/graph.html');
   var emptyTemplate = require('text!../../html/empty-graph.html');
+  var noWarningsTemplate = require('text!../../html/no-warnings-graph.html');
 
   return Backbone.Marionette.ItemView.extend({
     id: 'graph',
@@ -42,11 +43,18 @@ define(function (require) {
           },
           data: JSON.stringify(this.getMedListIds()),
           success: function (response) {
-            that.collection.reset(response, {parse: true});
-            that.drawSVG();
-            that.selectFirstItem();
+            if (response.length) {
+              that.collection.reset(response, {parse: true});
+              that.drawSVG();
+              that.selectFirstItem();
+            } else {
+              App.views.mainLayout.$el.removeClass('graph-layout');
+              App.vent.trigger('hide:graph:instructions');
+              that.$el.empty().append(_.template(noWarningsTemplate));
+            }
           }
         });
+        App.views.mainLayout.$el.addClass('graph-layout');
       }
     },
     drawSVG: function () {
@@ -134,16 +142,18 @@ define(function (require) {
     },
     hideTooltip: function (now) {
       var that = this;
-      if (this.ui.tooltip && _.isFunction(this.ui.tooltip.removeClass)) {
-        this.ui.tooltip.removeClass('open');
-      }
+      var tooltip = $(this.ui.tooltip);
+      tooltip.removeClass('open');
       if (now) {
-        that.ui.tooltip.attr('style', 'left: -1000px; top: -1000px;');
+        tooltip.attr('style', 'left: -1000px; top: -1000px;');
       } else {
         setTimeout(function () {
-          that.ui.tooltip.attr('style', 'left: -1000px; top: -1000px;');
+          tooltip.attr('style', 'left: -1000px; top: -1000px;');
         }, 150);
       }
+    },
+    onClose: function () {
+      App.views.mainLayout.$el.removeClass('graph-layout');
     }
   });
 });

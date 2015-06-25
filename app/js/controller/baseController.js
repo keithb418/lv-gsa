@@ -29,17 +29,9 @@ define(function (require) {
     },
     showGraph: function () {
       var GraphView = require('view/graph');
+      var GraphSubheader = require('view/graphSubheader');
       this.showMainLayout();
-      this.showSubheader({
-        title: 'Medication Warnings Chart',
-        button: {
-          title: 'Show Medicine List',
-          icon: 'fa-th-list',
-          action: function () {
-            window.location.hash = '#';
-          }
-        }
-      });
+      App.views.mainLayout.subheaderRegion.show(new GraphSubheader({model: new Backbone.Model({length: App.collections.medList.length})}));
       App.views.mainLayout.mainContentRegion.show(new GraphView());
     },
     showAbout: function () {

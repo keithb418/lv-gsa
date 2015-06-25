@@ -606,6 +606,15 @@ footer {
     }
 }
 
+.graph-layout {
+    .subheader {
+        height: 55px;
+    }
+    .main-content {
+        height: calc(100% - 55px);
+    }
+}
+
 .med-search {
     overflow-y: visible;
     position: relative;
