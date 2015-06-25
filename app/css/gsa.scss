@@ -143,6 +143,25 @@ footer {
     }
 }
 
+.tooltip {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 2px solid $primary;
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    color: $dark-primary;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    position: absolute;
+    z-index: 5;
+    
+    &.open {
+        opacity: 1;
+    }
+}
+
 .med-list {
     color: #fff;
     margin: 0;
@@ -678,6 +697,7 @@ footer {
 }
 
 .graph {
+    position: relative;
     text-align: center;
 }
 

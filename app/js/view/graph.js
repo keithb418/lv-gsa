@@ -19,6 +19,15 @@ define(function (require) {
     },
     initialize: function () {
       this.collection = new MedWarnings();
+      
+      _.bindAll(this, 'hideTooltip');
+    },
+    events: {
+      'click .part0 .mainbar': 'showFullDrugName',
+      'dblclick .part0 .mainbar': 'showLabel'
+    },
+    ui: {
+      tooltip: '#tooltip'
     },
     onShow: function() {
       var that = this;
@@ -35,6 +44,7 @@ define(function (require) {
           success: function (response) {
             that.collection.reset(response, {parse: true});
             that.drawSVG();
+            that.selectFirstItem();
           }
         });
       }
@@ -58,22 +68,25 @@ define(function (require) {
         
         this.$el.find('svg > g').empty();
         this.$el.find('svg').outerHeight(height + 30).outerWidth(500);
-        bP.draw(data, svg, height);
+        bP.draw(data, svg, height, null);
       }, this));
       
       $window.resize();
-      
+    },
+    selectFirstItem: function () {
       var e = document.createEvent('UIEvents');
       e.initUIEvent('click', true, true, window, 1);
       d3.select('#' + this.id + ' .mainbar').node().dispatchEvent(e);
+      this.hideTooltip(true);
     },
     getDataSet: function () {
       var medData = this.collection.toJSON();
       var dataSet = [];
       
       _.each(medData, function(drug) {
+        var brandName = drug.brandName.substr(0, 10) + '...';
         _.each(drug.warnings, function (warning) {
-          dataSet.push([drug.brandName, warning, 1]);
+          dataSet.push([{name: brandName, id: drug.id}, warning, 1]);
         });
       });
       
@@ -96,6 +109,41 @@ define(function (require) {
       var height = currentHeight > minMedsHeight ? currentHeight : minMedsHeight;
       
       return height;
+    },
+    showFullDrugName: function (e) {
+      var $target = $(e.currentTarget);
+      var active = $target.hasClass('active');
+      var id = e.currentTarget.id;
+      var brandName = App.collections.medList.get(id).get('brandName');
+      var that = this;
+      var position = $target.position();
+      
+      this.ui.tooltip.text(brandName);
+      this.ui.tooltip.attr('style', 'left: ' + position.left + 'px; top: ' + position.top + 'px;');
+      this.ui.tooltip.addClass('open');
+      
+      setTimeout(function () {
+        that.hideTooltip();
+      }, 5000);
+    },
+    showLabel: function (e) {
+      var id = e.currentTarget.id;
+      
+      this.hideTooltip(true);
+      App.vent.trigger('show:medLabel', new Backbone.Model({id: id}));
+    },
+    hideTooltip: function (now) {
+      var that = this;
+      if (this.ui.tooltip && _.isFunction(this.ui.tooltip.removeClass)) {
+        this.ui.tooltip.removeClass('open');
+      }
+      if (now) {
+        that.ui.tooltip.attr('style', 'left: -1000px; top: -1000px;');
+      } else {
+        setTimeout(function () {
+          that.ui.tooltip.attr('style', 'left: -1000px; top: -1000px;');
+        }, 150);
+      }
     }
   });
 });
