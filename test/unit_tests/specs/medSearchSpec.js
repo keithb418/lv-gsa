@@ -149,7 +149,7 @@ define(function (require) {
 				medSearch.closeResults.calls.reset();
 				
 				//Enter with no criteria
-				medSearch.search({which: 13});
+				medSearch.search({which: 13, preventDefault: function () {}});
 				expect(medSearch.collection.fetch).not.toHaveBeenCalled();
 				expect(medSearch.closeResults).toHaveBeenCalled();
 				
@@ -157,7 +157,7 @@ define(function (require) {
 				
 				//Enter with criteria
 				medSearch.ui.medSearch.val('test');
-				medSearch.search({which: 13});
+				medSearch.search({which: 13, preventDefault: function () {}});
 				var options = medSearch.collection.fetch.calls.mostRecent().args[0];
 				expect(medSearch.collection.fetch).toHaveBeenCalled();
 				expect(medSearch.closeResults).not.toHaveBeenCalled();
