@@ -13,7 +13,8 @@ class Labels
   end
 
   def get_med_label_text
-    @driver.find_element(:id, 'med-label').text
+    sleep 1
+    return wait {@driver.find_element(:id, 'med-label').text}
   end
 
 end
