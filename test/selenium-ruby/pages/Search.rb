@@ -21,5 +21,9 @@ class Search
     @driver.find_element(:id, "search-results").text
 
   end
+
+  def search_enabled?
+    @driver.find_element(:id, 'med-search').enabled?
+  end
 end
 

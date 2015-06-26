@@ -1,5 +1,8 @@
 require_relative '../../selenium-ruby/pages/Welcome'
 require_relative '../../selenium-ruby/pages/AddMeds'
+require_relative '../../selenium-ruby/pages/Search'
+require_relative '../../selenium-ruby/pages/Menu'
+
 
 describe 'Add Meds functionality' do
   # GSA-3: Add Meds
@@ -7,6 +10,7 @@ describe 'Add Meds functionality' do
     @welcome = Welcome.new (@driver)
     @search = Search.new (@driver)
     @add_meds = AddMeds.new (@driver)
+    @menu = Menu.new (@driver)
 
     @welcome.return_proceed_button.click
   end
@@ -32,7 +36,7 @@ describe 'Add Meds functionality' do
     @add_meds.add_a_med('imitrex')
     @add_meds.add_a_med('accupril') #10
     # at this point the input field should be disabled
-    expect(@driver.find_element(:id, 'med-search').enabled?).to be false
+    expect(@search.search_enabled?).to be false
   end
 
   it 'will save to session storage' do
@@ -45,7 +49,7 @@ describe 'Add Meds functionality' do
     @add_meds.return_med_list_checkbox_array[0].click
     @add_meds.return_med_list_checkbox_array[1].click
     @add_meds.return_med_list_checkbox_array[2].click
-    @driver.find_element(:id, 'action-btn').click
+    @menu.click_action_button
     expect((@add_meds.return_med_list_array[0].text).upcase).to match 'advil'.upcase
   end
 

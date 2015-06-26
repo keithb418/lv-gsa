@@ -25,5 +25,9 @@ class Chart
     @driver.find_elements(:css, '.part1 .mainbar')[0].attribute('class')
   end
 
+  def double_click_element (element)
+    @driver.action.double_click(element).perform
+  end
+
 end
 

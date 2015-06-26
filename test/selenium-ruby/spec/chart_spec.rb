@@ -38,7 +38,7 @@ describe 'Graph page' do
   end
 
   it 'will allow user to tap a med name twice to go to label page' do
-    @driver.action.double_click(@chart.return_first_med_label).perform # double click a med name
+    @chart.double_click_element(@chart.return_first_med_label)
     expect(@labels.get_med_label_text).to match "Brand Name"
   end
 

@@ -7,7 +7,7 @@ require_relative '../../selenium-ruby/pages/Chart'
 
 
 describe 'Label page' do
-  # GSA-4: Go to Graph
+  # GSA-5: Label
   before(:all) do
     @welcome = Welcome.new (@driver)
     @search = Search.new (@driver)
@@ -27,7 +27,7 @@ describe 'Label page' do
   end
 
   it 'will show full label info' do
-    #using crestor for this test since it returns all sections
+    # using crestor for this test since it returns all sections
     med_label_text = @labels.get_med_label_text
     expect(med_label_text).to match "Brand Name"
     expect(med_label_text).to match "Adverse Reactions"
@@ -39,17 +39,16 @@ describe 'Label page' do
 
 
   it 'includes a button to return to the list (when accessed from list)' do
-    @driver.find_element(:id, 'action-btn').click
+    @menu.click_action_button
     expect(@search.return_search_field).to be_truthy
   end
 
   it 'includes a button to return to the chart (when accessed from chart)' do
-    @driver.find_element(:id, 'action-btn').click #go to chart
-    @driver.action.double_click(@chart.return_med_name).perform # double click a med name
+    @menu.click_action_button
+    @chart.double_click_element(@chart.return_first_med_label)
     sleep 1
-    @driver.find_element(:id, 'action-btn').click #click the button again
+    @menu.click_action_button
     expect(@menu.return_subheader_text).to match 'Medication Warnings Chart' # to return to label
-
   end
 
 

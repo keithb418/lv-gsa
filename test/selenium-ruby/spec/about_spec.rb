@@ -13,7 +13,7 @@ describe 'About page' do
   end
 
 
-  it 'will be reachable to from the menu' do
+  it 'will be reachable from the menu' do
     @menu.open_menu
     @menu.return_about_link.click
     expect(@menu.return_subheader_text).to match 'About'
