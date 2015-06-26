@@ -91,6 +91,7 @@ define(function (require) {
       var criteria = this.ui.medSearch.val();
       
       if (e.which === 13 && criteria.length) {
+        e.preventDefault();
         this.collection.fetch({
           url: '../MedCheckerResources/drugs/search/' + criteria,
           success: function () {
