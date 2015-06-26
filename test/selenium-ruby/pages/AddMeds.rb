@@ -11,7 +11,8 @@ class AddMeds
 
   def add_a_med (medname)
     @search.enter_search_term(medname)
-    med_list = wait {@driver.find_elements(:css, '#search-results span.brand-name')}
+    sleep 5
+    med_list = @driver.find_elements(:css, '#search-results span.brand-name')
     med_list[0].click
   end
 
