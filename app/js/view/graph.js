@@ -84,7 +84,9 @@ define(function (require) {
     selectFirstItem: function () {
       var e = document.createEvent('UIEvents');
       e.initUIEvent('click', true, true, window, 1);
-      d3.select('#' + this.id + ' .mainbar').node().dispatchEvent(e);
+      if ($('#' + this.id + ' .mainbar').length) {
+        d3.select('#' + this.id + ' .mainbar').node().dispatchEvent(e);
+      };
       this.hideTooltip(true);
     },
     getDataSet: function () {
