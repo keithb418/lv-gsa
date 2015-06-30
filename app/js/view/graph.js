@@ -86,7 +86,7 @@ define(function (require) {
       e.initUIEvent('click', true, true, window, 1);
       if ($('#' + this.id + ' .mainbar').length) {
         d3.select('#' + this.id + ' .mainbar').node().dispatchEvent(e);
-      };
+      }
       this.hideTooltip(true);
     },
     getDataSet: function () {
